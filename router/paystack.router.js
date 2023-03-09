@@ -3,6 +3,7 @@ let { checkAuthenticated } = require('../utils/utils')
 let PayRef = require('../db/Models/Payment.Model')
 const request = require("request");
 const _ = require("lodash");
+const { response } = require('express');
 const { initializePayment, verifyPayment } = require("../config/paystack")(
     request
 );
@@ -18,7 +19,7 @@ router
             full_name: form.full_name,
         };
         form.amount *= 100;
-
+        console.log(form)
         initializePayment(form, (error, body) => {
             if (error) {
                 //handle errors
@@ -26,8 +27,9 @@ router
                 return res.redirect("/error");
             }
             let response = JSON.parse(body);
+            console.log(response)
             if (!response.status) {
-                return es
+                return res.end('wrob tin')
             }
             res.redirect(response.data.authorization_url);
         });
@@ -37,15 +39,16 @@ router
 router
     .route('/paystack/callback')
     .get(checkAuthenticated, (req, res) => {
-        const ref = req.query.reference;
+        console.log('yeah')
+        const ref = 'm0az4w39z5'
         verifyPayment(ref, (error, body) => {
             if (error) {
                 //handle errors appropriately
-                console.log(error);
+                console.log(error, 'error tings');
                 return res.redirect("/error");
             }
-            response = JSON.parse(body);
-
+            let response = JSON.parse(body);
+            console.log(response.data)
             const data = _.at(response.data, [
                 "reference",
                 "amount",
@@ -56,7 +59,7 @@ router
             [reference, amount, email, full_name] = data;
 
             let newPayRef = { reference, amount, email, full_name };
-
+            console.log(newPayRef, 'error tings');
             const payRef = new PayRef(newPayRef);
 
             payRef
@@ -68,6 +71,7 @@ router
                     res.redirect("/receipt/" + payReciept._id);
                 })
                 .catch((e) => {
+                    console.log(e)
                     res.redirect("/error");
                 });
         });
@@ -98,4 +102,5 @@ router
     })
 
 
+module.exports = router
 module.exports = router

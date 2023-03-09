@@ -124,7 +124,7 @@ funcs.forEach(item => {
 document.getElementById('cart-no').onclick = function() {
     let totalCartPrice = calculateCart(cart)
     document.getElementById('total-price').innerHTML = totalCartPrice
-    document.getElementById('total-price2').innerHTML = totalCartPrice
+    document.getElementById('total-price2').value = totalCartPrice
     document.getElementById('container').style.filter = 'blur(13px)'
     document.getElementById('shopping-cart').style.display = 'flex'
     document.getElementById('modal').style.display = 'flex'
@@ -137,14 +137,14 @@ document.getElementById('cart-no').onclick = function() {
             document.getElementById(id + 'itemId').style.display = 'none'
             let totalCartPrice = calculateCart(cart)
             document.getElementById('total-price').innerHTML = totalCartPrice
-            document.getElementById('total-price2').innerHTML = totalCartPrice
+            document.getElementById('total-price2').value = totalCartPrice
         }
         document.getElementById(id + 'incre').onclick = function() {
             cart[id].quantity = Number(document.getElementById(id + 'amount').innerHTML) + 1
             document.getElementById(id + 'amount').innerHTML = Number(document.getElementById(id + 'amount').innerHTML) + 1
             let totalCartPrice = calculateCart(cart)
             document.getElementById('total-price').innerHTML = totalCartPrice
-            document.getElementById('total-price2').innerHTML = totalCartPrice
+            document.getElementById('total-price2').value = totalCartPrice
         }
 
         document.getElementById(id + 'decre').onclick = function() {
@@ -153,7 +153,7 @@ document.getElementById('cart-no').onclick = function() {
             document.getElementById(id + 'amount').innerHTML = Number(document.getElementById(id + 'amount').innerHTML) - 1
             let totalCartPrice = calculateCart(cart)
             document.getElementById('total-price').innerHTML = totalCartPrice
-            document.getElementById('total-price2').innerHTML = totalCartPrice
+            document.getElementById('total-price2').value = totalCartPrice
         }
     })
 }
