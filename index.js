@@ -2,6 +2,8 @@ if (process.env.NODE_ENV !== "production") {
     require("dotenv").config();
 }
 
+let a = 'nll'
+
 // imports
 const express = require("express");
 const app = express();
