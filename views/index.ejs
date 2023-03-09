@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css" integrity="sha512-SzlrxWUlpfuzQ+pcUCosxcglQRNAq/DZjVsC0lE40xsADsfeQoEypE+enwcOiGjk/bSuGGKHEyjSoQ1zVisanQ==" crossorigin="anonymous" referrerpolicy="no-referrer"
+    />
+    <link rel="stylesheet" href="style6.css">
+    <link rel="stylesheet" href="payment.css">
+    <link rel="stylesheet" href="confirmed.css">
+</head>
+
+<body>
+
+    <div class="container" id="container">
+
+        <header>
+
+            <div class="head">
+                <p class="title">Food</p>
+                <p class="subtitle">French by restaurant</p>
+            </div>
+            <div class="header-menu">
+                <div class="input-search">
+                    <input type="text" placeholder="&#128269; search">
+                </div>
+                <div id="cart-no" class="icon">
+                    <small><b id="cart">0</b></small>
+                    <i class="fa fa-shopping-cart xl"></i>
+                </div>
+                <div class="avatar"></div>
+                <p class="name">Gabriella</p>
+
+            </div>
+        </header><br>
+        <p class="title12">Find the best foods <span><i>&#128269;</i></span></p>
+        <br><br>
+        <div id="productsMenu"></div>
+        <% if(products==null){%>
+            <p>
+                <%= 'sorry no products at the moment'%>
+            </p>
+            <% }else{ %>
+                <% let json = JSON.stringify(products)%>
+                    <input type="hidden" id="products" value=<%=json %>>
+
+                    <%}%>
+    </div>
+    <div class="modal" id="modal">
+        <div style="display: none;" id="shopping-cart" class="checkout">
+            <div class="content-buyed">
+                <div class="title2">
+                    <p class="title">Shopping cart</p>
+                </div>
+                <div class="cart centereds" id="cart-display">
+                    <p class="notice" id="empty-cart">nothing in your cart yet</p>
+                </div>
+                <div class="contd">
+                    <p id="back"><u>&#8592; Continue shopping</u> </p>
+                </div>
+            </div>
+
+            <!-- </div> -->
+            <div class="payment">
+                <div class="payment-choice">
+                    <div class="contain">
+                        <div class="head">
+                            <p class="title">Payment details</p>
+                            <p class="subtitle">payment types</p>
+                        </div>
+                    </div>
+                    <div class="card-type">
+                        <img id="paystack" class="card" src="./download__1_-removebg-preview.png" alt="">
+                        <img id="paypal" class="card" src="./emblem-Paypal-removebg-preview.png" alt="">
+
+
+                    </div>
+                    <div class="form contain">
+                        <form id="submitin" action="/paystack/pay" method="POST">
+                            <div class="pay-options">
+                                <input id="check1" type="checkbox" name="1" id="">
+                                <p>Pay with Paystack</p>
+                            </div>
+                            <div class="pay-options">
+                                <input id="check2" type="checkbox" name="1" id="">
+                                <p>Pay with Paypal</p>
+                            </div>
+                            <input id="full_name" type="hidden" name="full_name" value="">
+                            <input type="hidden" name="email" value="<%= email %>">
+                            <input id='total-price2' type="hidden" name="amount" value="0">
+                            <br>
+                            <button type="submit">Check Out <b><sup> N</sup ><span id='total-price'> 0</span></b></button>
+
+                        </form>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+
+
+
+    <div style="display: none;" class="checkout cent">
+        <p class="notice">Your food is on its way in the next 15mins</p>
+        <p class="under-notice"><u>&#8592; check your orders</u></p>
+    </div>
+
+
+
+
+
+
+
+    <div class="checkout" style="display: none;">
+        <div class=" content-buyed ">
+            <div class="title2 ">
+                <p class="title ">Orders</p>
+            </div>
+            <div class="cart ">
+                <div class="item ">
+                    <!-- <div class="item-img fries "></div> -->
+                    <div class="item-title ">
+                        <div class="head2 ">
+                            <p class="title ">French Fries</p>
+                            <p class="subtitle ">French by restaurant</p>
+                        </div>
+                    </div>
+                    <div class="incre-decre ">
+                        <p>-</p>
+                        <div class="amount ">1</div>
+                        <p>+</p>
+                    </div>
+                    <div class="price ">
+                        <p><sup>$</sup>0.5</p>
+                    </div>
+
+                </div>
+
+                <div class="item ">
+                    <!-- <div class="item-img egusi "></div> -->
+                    <div class="item-title ">
+                        <div class="head2 ">
+                            <p class="title ">Egusi & Chicken</p>
+                            <p class="subtitle ">French by restaurant</p>
+                        </div>
+                    </div>
+                    <div class="incre-decre ">
+                        <p>-</p>
+                        <div class="amount ">1</div>
+                        <p>+</p>
+                    </div>
+                    <div class="price ">
+                        <p><sup>$</sup>0.5</p>
+                    </div>
+
+                </div>
+
+                <div class="item ">
+                    <!-- <div class="item-img salad "></div> -->
+                    <div class="item-title ">
+                        <div class="head2 ">
+                            <p class="title ">Bowl of Salad</p>
+                            <p class="subtitle ">French by restaurant</p>
+                        </div>
+                    </div>
+                    <div class="incre-decre ">
+                        <p>-</p>
+                        <div class="amount ">1</div>
+                        <p>+</p>
+                    </div>
+                    <div class="price ">
+                        <p><sup>$</sup>0.5</p>
+                    </div>
+
+                </div>
+            </div>
+            <div class="contd ">
+                <p><u>&#8592; Continue shopping</u> </p>
+            </div>
+        </div>
+        <div class="map ">
+            <div class="map-choice ">
+                <div class="contain ">
+                    <div class="head ">
+                        <p class="title ">Location</p>
+                        <p class="subtitle ">locations</p>
+                    </div>
+                </div>
+                <div class="map-contain contain thin ">
+                    <!-- <p class="notice ">No Map Location</p>
+                        <p class="under-notice ">At the moment</p> -->
+                </div><br><br>
+                <div class="contain ">
+                    <p><b>Address:</b></p>
+                    <p>Keith samsh no1 opposite smash city innit</p>
+                    <p>shoult not nessesary be long uno</p>
+                </div>
+
+            </div>
+        </div>
+    </div>
+    </div>
+
+    </div>
+
+
+
+</body>
+<script src="./menu.js "></script>
+
+</html>

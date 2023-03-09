@@ -1,0 +1,89 @@
+    .cent {
+        justify-content: center;
+        flex-direction: column;
+    }
+    
+    .notice {
+        font-weight: bolder;
+        color: #2e2929;
+        font-size: 25px;
+        animation: fadeInAnimation ease 3s;
+        animation-iteration-count: 1;
+        animation-fill-mode: forwards;
+    }
+    
+    .under-notice {
+        font-weight: bolder;
+        color: #2e2929;
+        font-size: 20px;
+        animation: fadeInAnimation ease 5s;
+        animation-iteration-count: 1;
+        animation-fill-mode: forwards;
+    }
+    
+    .map {
+        border-left: 1px solid #ccc;
+        width: 40%;
+        height: 100%;
+        display: flex;
+        justify-content: center;
+        flex-direction: column;
+        box-shadow: -8px 0px 8px #ccc;
+        /* align-items: center; */
+    }
+    
+    .map-choice {
+        /* background-color: #4E5166; */
+        width: 80%;
+        height: 90%;
+        display: flex;
+        justify-content: center;
+        flex-direction: column;
+        /* align-items: center; */
+        /* border: 1px solid black; */
+        border-radius: 10px;
+        /* box-shadow: rgba(100, 100, 111, 0.2) 0px 0px 29px 0px; */
+    }
+    
+    .map-contain {
+        border-radius: 10px;
+        border: 1px solid #ccc;
+        width: 100%;
+        height: 50%;
+        display: flex;
+        justify-content: center;
+        flex-direction: column;
+        align-items: center;
+    }
+    
+    .thin {
+        line-height: 0em;
+        background-repeat: no-repeat;
+        background-size: cover;
+        cursor: pointer;
+        background-image: url(./Screenshot\ 2023-03-03\ 160623.png);
+    }
+    
+    .pay-options {
+        padding: 0px;
+        /* border: 1px solid #ccc;
+        border-radius: 10px; */
+        display: inline-flex;
+        width: 92%;
+        font-weight: bolder;
+        color: #2e2929;
+        font-size: 20px;
+    }
+    
+    .pay-options input {
+        width: 5%;
+    }
+    
+    @keyframes fadeInAnimation {
+        0% {
+            opacity: 0;
+        }
+        100% {
+            opacity: 1;
+        }
+    }

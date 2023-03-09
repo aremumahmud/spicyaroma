@@ -1,0 +1,223 @@
+@import url('https:/fonts.googleapis.com/css2?family=Nunito:wght@200&display=swap');
+* {
+    margin: 0;
+    padding: 0;
+    font-family: 'Nunito', sans-serif;
+}
+
+body {
+    height: 100vh;
+    border: none;
+    font-family: 'Nunito', sans-serif;
+}
+
+.general {
+    width: 100%;
+    height: 100vh;
+    background-color: #444242a1;
+    text-align: center;
+    color: white;
+}
+
+.centered {
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+
+.box {
+    background: rgba(0, 0, 0, 0.7) url('food.jpg') center center fixed;
+    background-size: cover;
+    background-blend-mode: normal;
+    height: 100vh;
+    background-color: #6d44b8;
+}
+
+.container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.container h1 {
+    margin-left: 10px;
+    cursor: pointer;
+    font-weight: bolder;
+    color: white;
+}
+
+.navbar ul li {
+    display: inline-block;
+    padding: 18px;
+    text-transform: uppercase;
+    font-weight: bold;
+}
+
+.navbar ul li a {
+    text-decoration: none;
+    color: #ffff;
+    padding: 4px;
+    transition: 3.5s;
+}
+
+.navbar ul li a:hover {
+    box-shadow: 0 3px 50px orangered inset, 0 3px 50px orangered inset, 0 3px 50px orangered inset, 0 3px 50px orangered inset, 0 3px 50px orangered inset, 0 3px 50px orangered inset;
+}
+
+.navbar .reservation {
+    padding: 8px;
+    background-color: orangered;
+    border-radius: 7px;
+}
+
+.navbar .reservation:hover {
+    box-shadow: 0 10px 50px #000 inset;
+    transition: 1s;
+}
+
+.content h3 {
+    font-size: 20px;
+}
+
+.bold {
+    font-weight: 1000;
+    font-size: 50px;
+}
+
+.content p {
+    text-align: center;
+    font-weight: bold;
+}
+
+
+/* .search {
+    position: absolute;
+    margin-top: 25%;
+    margin-left: 42%;
+} */
+
+.search input {
+    outline: none;
+    border: none;
+    padding: 12px 40px;
+    size: 1em;
+    border-radius: 7px;
+    /* width: 100%; */
+}
+
+.submit {
+    background-color: orangered;
+    color: #ffff;
+    font-weight: bold;
+    border-radius: 7px;
+}
+
+.submit a {
+    text-decoration: none;
+    color: #ffff;
+    padding: 12px 25px;
+    background-color: orangered;
+}
+
+.submit :hover {
+    background-color: #6d44b8;
+}
+
+.box2 {
+    background: #FFFECB;
+    /* margin: 0;
+    padding-top: 10%;
+    padding-bottom: 10%;
+    padding-right: 5%;
+    padding-left: 5%; */
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    min-height: 85vh;
+    padding: 10px;
+    /* font-family: sans-serif; */
+}
+
+.box2 div {
+    background-repeat: no-repeat;
+    background-size: cover;
+    width: 100%;
+    height: 250px;
+    cursor: pointer;
+    margin: 20px;
+    /* min-height: 50vh; */
+    border-radius: 7px;
+    /* box-shadow: 0 0 10px #252524; */
+}
+
+.food-wrapper {
+    width: 25%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    height: fit-content;
+}
+
+.fries {
+    background-image: url('fries.png');
+}
+
+.jollofrice {
+    background-image: url('jollofrice.png');
+}
+
+.egusi {
+    background-image: url('egusi.png');
+}
+
+.salad {
+    background-image: url('salad.jpg');
+}
+
+.soup {
+    background-image: url('soup.png');
+    background-repeat: no-repeat;
+    width: 50%;
+    height: 50%;
+    cursor: pointer;
+}
+
+.pancake {
+    background-image: url('pancake.png');
+    background-repeat: no-repeat;
+    width: 50%;
+    height: 80;
+    cursor: pointer;
+}
+
+.box3 {
+    background: #FFFECB;
+    margin: 0;
+    padding-left: 10%;
+    padding-right: 10%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: left;
+    min-height: 30vh;
+    font-family: sans-serif;
+    font-size: 1.5em;
+    color: #090808;
+    padding: 20px;
+}
+
+
+/* .img img {
+    width: 300px;
+    height: 300px;
+} */
+
+.logo {
+    background: rgba(0, 0, 0, 0.7) url('logo2.png') center center fixed;
+    background-size: cover;
+    background-blend-mode: normal;
+    height: 100vh;
+}
