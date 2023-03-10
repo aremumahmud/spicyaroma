@@ -66,14 +66,14 @@ class Db {
         })
     }
 
-    createOrder(userId) {
+    createOrder(userId, orderComprise) {
         return new Promise((res, rej) => {
 
             User.findById(userId).then(result => {
-                let order = new Order({})
+                let order = new Order({ email: result.email, orderComprise: [...orderComprise], completed: false })
                 result.orders.push(order)
                 result.save().then(resp => {
-                    res()
+                    res(resp._id)
                 }).catch(err => {
                     rej()
                 })
@@ -83,6 +83,22 @@ class Db {
             })
 
         })
+    }
+
+    confirmOrder(id) {
+        return new Promise((res, rej) => {
+            Order.findById(id).then(order => {
+                order.completed = true
+                order.save().then(r => {
+                    res()
+                }).catch(e => {
+                    rej()
+                })
+            }).catch(e => {
+                rej()
+            })
+        })
+
     }
 
     insertProducts(array, done) {

@@ -36,7 +36,7 @@ function createItem(item) {
 </div>`
 }
 
-function createCartItem(item) {
+function createCartItem(item, qty = 1) {
     return `<div class="item" id="${item._id+'itemId'}">
     <div class="item-img ${item.name.toLowerCase()}"></div>
     <div class="item-title">
@@ -47,7 +47,7 @@ function createCartItem(item) {
     </div>
     <div class="incre-decre">
         <p id='${item._id+'decre'}'>-</p>
-        <div class="amount" id='${item._id+'amount'}'>1</div>
+        <div class="amount" id='${item._id+'amount'}'>${qty}</div>
         <p id='${item._id+'incre'}'>+</p>
     </div>
     <div class="price">
@@ -72,6 +72,38 @@ function calculateCart(cart) {
     return total
 }
 
+let id = document.getElementById('_id').value
+
+function cacheCart(cart, cb) {
+    console.log(cart)
+    fetch('/cacheCart/' + id, {
+        method: 'post',
+        body: new URLSearchParams({
+            cart: JSON.stringify(cart),
+            id
+        }),
+        headers: {
+            'Content-Type': 'application/x-www-form-urlencoded'
+
+        }
+    }).then(x => {
+        console.log(x)
+        cb && cb(null, x)
+    }).catch(e => {
+        cb && cb(e, null)
+        console.log(x)
+    })
+}
+
+
+function itemify(cart) {
+    let itemified = []
+    let keys = Object.keys(cart)
+    keys.forEach(key => {
+        itemified.push(cart[key])
+    })
+    return itemified
+}
 
 
 
@@ -79,6 +111,27 @@ function calculateCart(cart) {
 
 
 
+fetch('/cacheCart/' + id).then(res => {
+    return res.json()
+}).then(res2 => {
+    console.log(res2)
+    if (res2.status == 'not found') return
+    cart = res2.cart
+    if (Object.keys(cart).length == 0) return
+    let keys = Object.keys(cart)
+    console.log(keys)
+    let total = 0
+    document.getElementById('cart-display').classList.remove('centereds')
+    document.getElementById('empty-cart').style.display = 'none'
+    keys.forEach(item => {
+
+        document.getElementById('cart-display').innerHTML += createCartItem(cart[item].item, cart[item].quantity)
+        total += cart[item].quantity
+    })
+    document.getElementById('cart').innerHTML = total
+    document.getElementById('button_sub').disabled = false
+    document.getElementById('button_sub').style.cursor = 'pointer'
+})
 
 
 
@@ -107,6 +160,9 @@ funcs.forEach(item => {
         document.getElementById('empty-cart').style.display = 'none'
         document.getElementById('cart').innerHTML = Number(document.getElementById('cart').innerHTML) + 1
         if (cart[item._id]) {
+            cacheCart(cart)
+            document.getElementById('button_sub').disabled = false
+            document.getElementById('button_sub').style.cursor = 'pointer'
             document.getElementById(item._id + 'amount').innerHTML = Number(document.getElementById(item._id + 'amount').innerHTML) + 1
             return cart[item._id].quantity += 1
         }
@@ -114,7 +170,9 @@ funcs.forEach(item => {
             quantity: 1,
             item
         }
-
+        cacheCart(cart)
+        document.getElementById('button_sub').disabled = false
+        document.getElementById('button_sub').style.cursor = 'pointer'
 
     }
 
@@ -122,6 +180,7 @@ funcs.forEach(item => {
 })
 
 document.getElementById('cart-no').onclick = function() {
+
     let totalCartPrice = calculateCart(cart)
     document.getElementById('total-price').innerHTML = totalCartPrice
     document.getElementById('total-price2').value = totalCartPrice
@@ -134,6 +193,7 @@ document.getElementById('cart-no').onclick = function() {
             if (!confirm('wanna delete this from your cart!'))
                 return
             delete cart[id]
+            cacheCart(cart)
             document.getElementById(id + 'itemId').style.display = 'none'
             let totalCartPrice = calculateCart(cart)
             document.getElementById('total-price').innerHTML = totalCartPrice
@@ -143,6 +203,7 @@ document.getElementById('cart-no').onclick = function() {
             cart[id].quantity = Number(document.getElementById(id + 'amount').innerHTML) + 1
             document.getElementById(id + 'amount').innerHTML = Number(document.getElementById(id + 'amount').innerHTML) + 1
             let totalCartPrice = calculateCart(cart)
+            cacheCart(cart)
             document.getElementById('total-price').innerHTML = totalCartPrice
             document.getElementById('total-price2').value = totalCartPrice
         }
@@ -152,6 +213,7 @@ document.getElementById('cart-no').onclick = function() {
             cart[id].quantity = Number(document.getElementById(id + 'amount').innerHTML) - 1
             document.getElementById(id + 'amount').innerHTML = Number(document.getElementById(id + 'amount').innerHTML) - 1
             let totalCartPrice = calculateCart(cart)
+            cacheCart(cart)
             document.getElementById('total-price').innerHTML = totalCartPrice
             document.getElementById('total-price2').value = totalCartPrice
         }
@@ -209,5 +271,6 @@ document.getElementById('submitin').onsubmit = function(e) {
         return alert('please provide a name')
     }
     document.getElementById('full_name').value = name
+    document.getElementById('cart-ting').value = itemify(cart)
     e.target.submit()
 }

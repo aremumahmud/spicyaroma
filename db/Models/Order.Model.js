@@ -4,7 +4,6 @@ const Schema = mongoose.Schema
 let Order = new Schema({
     email: {
         require: true,
-        unique: true,
         type: String
     },
     orderComprise: [],
