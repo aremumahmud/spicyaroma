@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 
 <head>
@@ -12,6 +12,7 @@
     <link rel="stylesheet" href="/css/style6.css">
     <link rel="stylesheet" href="/css/payment.css">
     <link rel="stylesheet" href="/css/confirmed.css">
+    <link rel="stylesheet" href="/css/dashboard-responsive.css">
     <style>
         @font-face {
             font-family: nunito;
@@ -24,155 +25,168 @@
     </style>
 </head>
 
-<body>
-    <input type="hidden" id="errorMsg" name="" value="<%=errorMsg%>">
-    <input type="hidden" id="page" name="" value="<%=page%>">
+<body class="body">
+    <div class="body">
+        <input type="hidden" id="errorMsg" name="" value="<%=errorMsg%>">
+        <input type="hidden" id="page" name="" value="<%=page%>">
 
-    <div class="container" id="container">
+        <div class="container" id="container">
 
-        <header>
+            <header class="header">
 
-            <div class="head">
-                <p class="title">Food</p>
-                <p class="subtitle">French by restaurant</p>
-            </div>
-            <div class="header-menu">
-                <div class="input-search">
-                    <input type="text" placeholder="&#128269; search">
+                <div class="head ord">
+                    <div>
+                        <p class="title">Food</p>
+                        <p class="subtitle">French by restaurant</p>
+                    </div>
+                    <div id="order1-no" class="icon show">
+                        <small><b id="order1">0</b></small>
+                        <i class="fa fa-pen"></i>
+                    </div>
+                    <div id="cart-no" class="icon show">
+                        <small><b id="cart">0</b></small>
+                        <i class="fa fa-shopping-cart xl"></i>
+                    </div>
                 </div>
-                <div id="order1-no" class="icon">
-                    <small><b id="order1">0</b></small>
-                    <i class="fa fa-shopping-cart xl"></i>
+                <div class="header-menu">
+                    <div class="input-search">
+                        <input type="text" placeholder="&#128269; search">
+                    </div>
+                    <div id="order1-no" class="icon">
+                        <small><b id="order1">0</b></small>
+                        <i class="fa fa-shopping-cart xl"></i>
+                    </div>
+                    <div id="cart-no" class="icon">
+                        <small><b id="cart">0</b></small>
+                        <i class="fa fa-shopping-cart xl"></i>
+                    </div>
+                    <div class="avatar"></div>
+                    <p class="name">
+                        <%= email.split('@')[0] %>
+                    </p>
+
                 </div>
-                <div id="cart-no" class="icon">
-                    <small><b id="cart">0</b></small>
-                    <i class="fa fa-shopping-cart xl"></i>
-                </div>
-                <div class="avatar"></div>
-                <p class="name">
-                    <%= email.split('@')[0] %>
+            </header><br>
+            <p class="title12">Find the best foods <span><i>&#128269;</i></span></p>
+            <br><br>
+            <div id="productsMenu"></div>
+            <% if(products==null){%>
+                <p>
+                    <%= 'sorry no products at the moment'%>
                 </p>
+                <% }else{ %>
+                    <% let json = JSON.stringify(products)%>
+                        <input type="hidden" id="products" value=<%=json %>>
+                        <input type="hidden" id="_id" value=<%=id %>>
+                        <%}%>
+        </div>
+        <div class="modal" id="modal">
+            <div style="display: none;" id="shopping-cart" class="checkout">
+                <div class="content-buyed">
+                    <div class="title2">
+                        <p class="title">Shopping cart</p>
+                    </div>
+                    <div class="cart centereds" id="cart-display">
+                        <p class="notice" id="empty-cart">nothing in your cart yet</p>
+                    </div>
+                    <div class="contd">
+                        <p id="back"><u>&#8592; Continue shopping</u> </p>
+                    </div>
+                </div>
 
-            </div>
-        </header><br>
-        <p class="title12">Find the best foods <span><i>&#128269;</i></span></p>
-        <br><br>
-        <div id="productsMenu"></div>
-        <% if(products==null){%>
-            <p>
-                <%= 'sorry no products at the moment'%>
-            </p>
-            <% }else{ %>
-                <% let json = JSON.stringify(products)%>
-                    <input type="hidden" id="products" value=<%=json %>>
-                    <input type="hidden" id="_id" value=<%=id %>>
-                    <%}%>
-    </div>
-    <div class="modal" id="modal">
-        <div style="display: none;" id="shopping-cart" class="checkout">
-            <div class="content-buyed">
-                <div class="title2">
-                    <p class="title">Shopping cart</p>
-                </div>
-                <div class="cart centereds" id="cart-display">
-                    <p class="notice" id="empty-cart">nothing in your cart yet</p>
-                </div>
-                <div class="contd">
-                    <p id="back"><u>&#8592; Continue shopping</u> </p>
-                </div>
-            </div>
+                <!-- </div> -->
+                <div class="payment">
+                    <div class="payment-choice">
+                        <div class="contain">
+                            <div class="head">
+                                <p class="title">Payment details</p>
+                                <p class="subtitle">payment types</p>
+                            </div>
+                        </div>
+                        <p id="errmsg"></p>
+                        <div class="card-type">
+                            <img id="paystack" class="card" src="/imgs/download__1_-removebg-preview.png" alt="">
+                            <img id="paypal" class="card" src="/imgs/emblem-Paypal-removebg-preview.png" alt="">
 
-            <!-- </div> -->
-            <div class="payment">
-                <div class="payment-choice">
-                    <div class="contain">
-                        <div class="head">
-                            <p class="title">Payment details</p>
-                            <p class="subtitle">payment types</p>
+
+                        </div>
+                        <div class="form contain">
+                            <form id="submitin" action="/paystack/pay" method="POST">
+                                <div class="pay-options">
+                                    <input id="check1" type="checkbox" name="1" id="">
+                                    <p>Pay with Paystack</p>
+                                </div>
+                                <div class="pay-options">
+                                    <input id="check2" type="checkbox" name="1" id="">
+                                    <p>Pay with Paypal</p>
+                                </div>
+                                <input id="full_name" type="hidden" name="full_name" value="">
+                                <input type="hidden" name="email" value="<%= email %>">
+                                <input type="hidden" name="id" value="<%= id %>">
+                                <input id="cart-ting" type="hidden" name="comprise">
+                                <input id='total-price2' type="hidden" name="amount" value="0">
+                                <br>
+                                <button id="button_sub" style="cursor: not-allowed;" disabled type="submit">Check Out <b><sup> N</sup ><span id='total-price'> 0</span></b></button>
+
+                            </form>
+
                         </div>
                     </div>
-                    <p id="errmsg"></p>
-                    <div class="card-type">
-                        <img id="paystack" class="card" src="/imgs/download__1_-removebg-preview.png" alt="">
-                        <img id="paypal" class="card" src="/imgs/emblem-Paypal-removebg-preview.png" alt="">
-
-
-                    </div>
-                    <div class="form contain">
-                        <form id="submitin" action="/paystack/pay" method="POST">
-                            <div class="pay-options">
-                                <input id="check1" type="checkbox" name="1" id="">
-                                <p>Pay with Paystack</p>
-                            </div>
-                            <div class="pay-options">
-                                <input id="check2" type="checkbox" name="1" id="">
-                                <p>Pay with Paypal</p>
-                            </div>
-                            <input id="full_name" type="hidden" name="full_name" value="">
-                            <input type="hidden" name="email" value="<%= email %>">
-                            <input type="hidden" name="id" value="<%= id %>">
-                            <input id="cart-ting" type="hidden" name="comprise">
-                            <input id='total-price2' type="hidden" name="amount" value="0">
-                            <br>
-                            <button id="button_sub" style="cursor: not-allowed;" disabled type="submit">Check Out <b><sup> N</sup ><span id='total-price'> 0</span></b></button>
-
-                        </form>
-
-                    </div>
                 </div>
             </div>
-        </div>
 
 
 
 
 
 
-        <div style="display: none;" class="checkout cent">
-            <p class="notice">Your food is on its way in the next 15mins</p>
-            <p class="under-notice"><u>&#8592; check your orders</u></p>
-        </div>
-
-
-
-
-
-
-
-        <div id="order-box" class="checkout" style="display: none;">
-            <div class=" content-buyed ">
-                <div class="title2 ">
-                    <p class="title ">Orders</p>
-                </div>
-                <div class="cart centereds" id="order-display">
-                    <p class="notice" id="empty-order">You have no orders yet</p>
-                </div>
-                <div class="contd ">
-                    <p id="back1"><u>&#8592; Continue shopping</u> </p>
-                </div>
+            <div style="display: none;" class="checkout cent">
+                <p class="notice">Your food is on its way in the next 15mins</p>
+                <p class="under-notice"><u>&#8592; check your orders</u></p>
             </div>
-            <div class="map ">
-                <div class="map-choice ">
-                    <div class="contain ">
-                        <div class="head ">
-                            <p class="title ">Location</p>
-                            <p class="subtitle ">locations</p>
+
+
+
+
+
+
+
+            <div id="order-box" class="checkout" style="display: none;">
+                <div class=" content-buyed ">
+                    <div class="title2 ">
+                        <p class="title ">Orders</p>
+                    </div>
+                    <div class="cart centereds" id="order-display">
+                        <p class="notice" id="empty-order">You have no orders yet</p>
+                    </div>
+                    <div class="contd ">
+                        <p id="back1"><u>&#8592; Continue shopping</u> </p>
+                    </div>
+                </div>
+                <div class="map ">
+                    <div class="map-choice ">
+                        <div class="contain ">
+                            <div class="head ">
+                                <p class="title ">Location</p>
+                                <p class="subtitle ">locations</p>
+                            </div>
                         </div>
-                    </div>
-                    <div class="map-contain contain thin ">
-                        <!-- <p class="notice ">No Map Location</p>
+                        <div class="map-contain contain thin ">
+                            <!-- <p class="notice ">No Map Location</p>
                         <p class="under-notice ">At the moment</p> -->
-                    </div><br><br>
-                    <div class="contain ">
-                        <p><b>Address:</b></p>
-                        <p>Keith samsh no1 opposite smash city innit</p>
-                        <p>shoult not nessesary be long uno</p>
-                    </div>
+                        </div><br><br>
+                        <div class="contain ">
+                            <p><b>Address:</b></p>
+                            <p>Keith samsh no1 opposite smash city innit</p>
+                            <p>shoult not nessesary be long uno</p>
+                        </div>
 
+                    </div>
                 </div>
             </div>
         </div>
     </div>
+
 
 </body>
 <script src="/js/init.js"></script>

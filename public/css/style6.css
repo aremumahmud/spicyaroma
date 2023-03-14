@@ -3,9 +3,10 @@
     font-family: 'Nunito', sans-serif;
 }
 
-body {
+.body {
     display: flex;
     justify-content: center;
+    width: 100%;
 }
 
 .icon {
@@ -35,6 +36,7 @@ header {
     justify-content: space-between;
     align-items: center;
     line-height: 0.5em;
+    /* flex-direction: column; */
     /* margin-left: 50px;
     margin-right: 50px; */
 }
@@ -89,6 +91,10 @@ hr {
     font-weight: bolder;
     font-size: 20px;
     color: rgba(0, 0, 0, 0.767)
+}
+
+.show {
+    display: none;
 }
 
 .menu {

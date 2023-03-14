@@ -1,0 +1,30 @@
+@media only screen and (max-width:768px) {
+    /* body {
+        background-color: blanchedalmond;
+    } */
+    .ad {
+        display: none;
+    }
+    .signup {
+        width: 100%;
+        align-content: center;
+        /* justify-content: center; */
+        flex-direction: column;
+    }
+    header {
+        width: 90%;
+    }
+    .google {
+        width: 90%;
+    }
+    .form-wrap form input {
+        width: 90%;
+        background-color: transparent;
+    }
+    .other {
+        width: 90%;
+    }
+    .submit {
+        width: 90%;
+    }
+}
