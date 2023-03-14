@@ -12,8 +12,8 @@ const { verifyPayment } = require("../config/paystack")(
 
 module.exports = (req, res) => {
     console.log('yeah')
-    const ref = 'uf2xmlnd8a'
-        //  const ref = req.query.reference;
+        //const ref = 'uf2xmlnd8a'
+    const ref = req.query.reference;
     verifyPayment(ref, (error, body) => {
         if (error) {
             //handle errors appropriately
