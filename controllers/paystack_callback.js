@@ -58,7 +58,7 @@ module.exports = (req, res) => {
                             })
                             client.del('Order' + _id)
                             addToOrderList(_id, e)
-                            res.redirect("/receipt/" + payReciept._id);
+                            res.redirect("/dashboard");
                         })
                         .catch((e) => {
                             console.log(e, 'here 2')

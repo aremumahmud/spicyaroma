@@ -65,7 +65,14 @@ router
 router
     .route('/register')
     .get(checkNotAuthenticated, middleWareFactory('login-visit'), (req, res) => {
-        res.render("register.ejs");
+        let err = req.query.error
+        if (err == 'exist') {
+            return res.render("register.ejs", { error: 'User exists!' });
+        } else if (err == 'unknown') {
+            return res.render("register.ejs", { error: 'an unexpected error occured' });
+        }
+        res.render("register.ejs", { error: null });
+
     })
     .post(checkNotAuthenticated, async(req, res) => {
         try {
@@ -74,12 +81,12 @@ router
             db.createUser(email, hashedPassword).then(user => {
                 res.redirect("/login");
             }).catch(e => {
-                res.redirect("/register");
+                res.redirect("/register?error=exist");
             })
 
         } catch (e) {
             // console.log(e);
-            res.redirect("/register");
+            res.redirect("/register?error=unknown");
         }
 
         // check if the user is successfully added to array
