@@ -9,9 +9,9 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css" integrity="sha512-SzlrxWUlpfuzQ+pcUCosxcglQRNAq/DZjVsC0lE40xsADsfeQoEypE+enwcOiGjk/bSuGGKHEyjSoQ1zVisanQ==" crossorigin="anonymous" referrerpolicy="no-referrer"
     />
     <link rel="stylesheet" href="'https:/fonts.googleapis.com/css2?family=Nunito:wght@200&display=swap'">
-    <link rel="stylesheet" href="style6.css">
-    <link rel="stylesheet" href="payment.css">
-    <link rel="stylesheet" href="confirmed.css">
+    <link rel="stylesheet" href="/css/style6.css">
+    <link rel="stylesheet" href="/css/payment.css">
+    <link rel="stylesheet" href="/css/confirmed.css">
     <style>
         @font-face {
             font-family: nunito;
@@ -25,6 +25,8 @@
 </head>
 
 <body>
+    <input type="hidden" id="errorMsg" name="" value="<%=errorMsg%>">
+    <input type="hidden" id="page" name="" value="<%=page%>">
 
     <div class="container" id="container">
 
@@ -37,6 +39,10 @@
             <div class="header-menu">
                 <div class="input-search">
                     <input type="text" placeholder="&#128269; search">
+                </div>
+                <div id="order1-no" class="icon">
+                    <small><b id="order1">0</b></small>
+                    <i class="fa fa-shopping-cart xl"></i>
                 </div>
                 <div id="cart-no" class="icon">
                     <small><b id="cart">0</b></small>
@@ -85,9 +91,10 @@
                             <p class="subtitle">payment types</p>
                         </div>
                     </div>
+                    <p id="errmsg"></p>
                     <div class="card-type">
-                        <img id="paystack" class="card" src="./download__1_-removebg-preview.png" alt="">
-                        <img id="paypal" class="card" src="./emblem-Paypal-removebg-preview.png" alt="">
+                        <img id="paystack" class="card" src="/imgs/download__1_-removebg-preview.png" alt="">
+                        <img id="paypal" class="card" src="/imgs/emblem-Paypal-removebg-preview.png" alt="">
 
 
                     </div>
@@ -132,71 +139,16 @@
 
 
 
-        <div class="checkout" style="display: none;">
+        <div id="order-box" class="checkout" style="display: none;">
             <div class=" content-buyed ">
                 <div class="title2 ">
                     <p class="title ">Orders</p>
                 </div>
-                <div class="cart ">
-                    <div class="item ">
-                        <!-- <div class="item-img fries "></div> -->
-                        <div class="item-title ">
-                            <div class="head2 ">
-                                <p class="title ">French Fries</p>
-                                <p class="subtitle ">French by restaurant</p>
-                            </div>
-                        </div>
-                        <div class="incre-decre ">
-                            <p>-</p>
-                            <div class="amount ">1</div>
-                            <p>+</p>
-                        </div>
-                        <div class="price ">
-                            <p><sup>$</sup>0.5</p>
-                        </div>
-
-                    </div>
-
-                    <div class="item ">
-                        <!-- <div class="item-img egusi "></div> -->
-                        <div class="item-title ">
-                            <div class="head2 ">
-                                <p class="title ">Egusi & Chicken</p>
-                                <p class="subtitle ">French by restaurant</p>
-                            </div>
-                        </div>
-                        <div class="incre-decre ">
-                            <p>-</p>
-                            <div class="amount ">1</div>
-                            <p>+</p>
-                        </div>
-                        <div class="price ">
-                            <p><sup>$</sup>0.5</p>
-                        </div>
-
-                    </div>
-
-                    <div class="item ">
-                        <!-- <div class="item-img salad "></div> -->
-                        <div class="item-title ">
-                            <div class="head2 ">
-                                <p class="title ">Bowl of Salad</p>
-                                <p class="subtitle ">French by restaurant</p>
-                            </div>
-                        </div>
-                        <div class="incre-decre ">
-                            <p>-</p>
-                            <div class="amount ">1</div>
-                            <p>+</p>
-                        </div>
-                        <div class="price ">
-                            <p><sup>$</sup>0.5</p>
-                        </div>
-
-                    </div>
+                <div class="cart centereds" id="order-display">
+                    <p class="notice" id="empty-order">You have no orders yet</p>
                 </div>
                 <div class="contd ">
-                    <p><u>&#8592; Continue shopping</u> </p>
+                    <p id="back1"><u>&#8592; Continue shopping</u> </p>
                 </div>
             </div>
             <div class="map ">
@@ -223,6 +175,10 @@
     </div>
 
 </body>
-<script src="./menu.js "></script>
+<script src="/js/init.js"></script>
+<script src="/js/funcs.js"></script>
+<script src="/js/menu.js "></script>
+<script src="/js/errs.js"></script>
+<script src="/js/orders.js"></script>
 
 </html>

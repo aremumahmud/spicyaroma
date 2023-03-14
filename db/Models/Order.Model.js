@@ -7,7 +7,8 @@ let Order = new Schema({
         type: String
     },
     orderComprise: [],
-    completed: Boolean
+    completed: Boolean,
+    ts: Date
 })
 
 module.exports = mongoose.model('Order', Order)

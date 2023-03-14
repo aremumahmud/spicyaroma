@@ -24,7 +24,7 @@ body {
 .ad {
     margin: 0;
     /* border: 1px solid black; */
-    background-image: url(./15.jpg);
+    background-image: url(/imgs/15.jpg);
     width: 50%;
     object-fit: contain;
     background-repeat: no-repeat;

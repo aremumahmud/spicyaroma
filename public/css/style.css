@@ -28,7 +28,7 @@ body {
 }
 
 .box {
-    background: rgba(0, 0, 0, 0.7) url('food.jpg') center center fixed;
+    background: rgba(0, 0, 0, 0.7) url('/imgs/food.jpg') center center fixed;
     background-size: cover;
     background-blend-mode: normal;
     height: 100vh;
@@ -162,23 +162,23 @@ body {
 }
 
 .fries {
-    background-image: url('fries.png');
+    background-image: url('/imgs/fries.png');
 }
 
 .jollofrice {
-    background-image: url('jollofrice.png');
+    background-image: url('/imgs/jollofrice.png');
 }
 
 .egusi {
-    background-image: url('egusi.png');
+    background-image: url('/imgs/egusi.png');
 }
 
 .salad {
-    background-image: url('salad.jpg');
+    background-image: url('/imgs/salad.jpg');
 }
 
 .soup {
-    background-image: url('soup.png');
+    background-image: url('/imgs/soup.png');
     background-repeat: no-repeat;
     width: 50%;
     height: 50%;
@@ -186,7 +186,7 @@ body {
 }
 
 .pancake {
-    background-image: url('pancake.png');
+    background-image: url('/imgs/pancake.png');
     background-repeat: no-repeat;
     width: 50%;
     height: 80;
@@ -216,7 +216,7 @@ body {
 } */
 
 .logo {
-    background: rgba(0, 0, 0, 0.7) url('logo2.png') center center fixed;
+    background: rgba(0, 0, 0, 0.7) url('/imgs/logo2.png') center center fixed;
     background-size: cover;
     background-blend-mode: normal;
     height: 100vh;

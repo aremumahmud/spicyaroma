@@ -1,5 +1,5 @@
 const mongoose = require('mongoose')
-const Uri = process.env.MONGOOSE_URI || 'mongodb://127.0.0.1:27017/testdb'
+const Uri = process.env.MONGOOSE_URI || 'mongodb://127.0.0.1:27017/testdb1'
 const User = require('./Models/User.Model')
 const Order = require('./Models/Order.Model')
 const ProductModel = require('./Models/Product.Model')
@@ -30,11 +30,15 @@ class Db {
     findUserById(userId) {
         return new Promise((res, rej) => {
 
-            User.findById(userId).then(result => {
-                res(result)
-            }).catch(err => {
-                rej()
-            })
+            User.findById(userId)
+                .populate({ path: 'orders', model: 'Order' })
+                .then(result => {
+                    // console.log(result)
+                    res(result)
+                }).catch(err => {
+                    console.log(err)
+                    rej()
+                })
 
         })
     }
@@ -42,23 +46,27 @@ class Db {
     findUserByEmail(email) {
         return new Promise((res, rej) => {
 
-            User.findOne({ email }).then(result => {
-                res(result)
-            }).catch(err => {
-                rej()
-            })
+            User.findOne({ email })
+                .populate({ path: 'orders', model: 'Order' })
+                .then(result => {
+                    // console.log(result)
+                    res(result)
+                }).catch(err => {
+                    console.log(err)
+                    rej()
+                })
 
         })
     }
 
-    fetchAllOrders(userId) {
+    fetchAllOrders(id) {
         return new Promise((res, rej) => {
 
-            User.findById(userId)
-                .populate('order')
+            User.findById(id)
+                .populate('orders')
                 .then(result => {
                     let orders = result.orders
-                    res()
+                    res(orders)
                 }).catch(err => {
                     rej()
                 })
@@ -70,15 +78,28 @@ class Db {
         return new Promise((res, rej) => {
 
             User.findById(userId).then(result => {
-                let order = new Order({ email: result.email, orderComprise: [...orderComprise], completed: false })
-                result.orders.push(order)
-                result.save().then(resp => {
-                    res(resp._id)
+                let order = new Order({ email: result.email, orderComprise: [...orderComprise], completed: false, ts: new Date() })
+
+                order.save().then(e => {
+                    result.orders.push(order)
+                        //console.log(order)
+                    result.save().then(resp => {
+                        //console.log(resp)
+                        res(order)
+                    }).catch(err => {
+                        console.log('not found')
+                        console.log(err)
+                        rej()
+                    })
+
                 }).catch(err => {
+                    console.log(err)
                     rej()
                 })
 
             }).catch(err => {
+
+                console.log(err)
                 rej()
             })
 

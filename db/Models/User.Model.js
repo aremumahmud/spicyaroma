@@ -13,8 +13,8 @@ let User = new Schema({
     },
     profile: String,
     orders: [{
-        type: Schema.Types.ObjectId,
-        ref: 'order'
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'Order'
     }]
 })
 

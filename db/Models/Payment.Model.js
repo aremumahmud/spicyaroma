@@ -19,7 +19,16 @@ const paySchema = new mongoose.Schema({
     reference: {
         type: String,
         required: true,
+        unique: true
     },
+    transactionStats: {
+        type: Boolean,
+        required: true,
+    },
+    orderId: {
+        type: String,
+        required: true,
+    }
 });
 
 const PayTadi = mongoose.model("PayTadi", paySchema);

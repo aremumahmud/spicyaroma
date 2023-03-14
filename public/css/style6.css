@@ -157,15 +157,15 @@ hr {
 }
 
 .fries {
-    background-image: url(./fries.png);
+    background-image: url(/imgs/fries.png);
 }
 
 .salad {
-    background-image: url(./salad.jpg);
+    background-image: url(/imgs/salad.jpg);
 }
 
 .egusi {
-    background-image: url(./egusi.png);
+    background-image: url(/imgs/egusi.png);
 }
 
 .modal {
@@ -307,4 +307,17 @@ hr {
 
 .centereds {
     justify-content: center;
+}
+
+#errmsg {
+    color: red;
+    text-align: center;
+}
+
+.yes {
+    border: 1px solid green
+}
+
+.no {
+    border: 1px solid yellow;
 }

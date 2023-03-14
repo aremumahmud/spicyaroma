@@ -5,7 +5,9 @@ let { checkAuthenticated, checkNotAuthenticated } = require('../utils/utils')
 const passport = require("passport");
 const client = require('../redis-client/client')
 const middleWareFactory = require('../middlewares')
+const err_key = require('../err_keys')
 let router = express.Router()
+
 
 
 router
@@ -18,13 +20,25 @@ router
 router
     .route('/dashboard')
     .get(checkAuthenticated, middleWareFactory('sucess-login'), (req, res) => {
-        console.log(req.user)
+        // console.log(req.user)
         db.getAllProducts().then(products => {
-            console.log(products)
+            //console.log(products)
+            let parameters, errorMsg, page;
+
+            if (req.query.type == 'error') {
+                parameters = err_key[req.query.id]
+                if (parameters) {
+                    errorMsg = parameters.errMsg
+                    page = parameters.page
+                }
+            }
+            // return res.render('error.ejs')
             res.render("index.ejs", {
                 email: req.user.email,
                 id: req.user._id,
-                products
+                products,
+                errorMsg,
+                page
             });
         }).catch(e => {
             res.send('an error occured')
@@ -120,41 +134,73 @@ router
 
     })
 
+// router
+//     .route('/cacheOrders/:id')
+//     .get(checkAuthenticated, (req, res) => {
+//         client.get('order' + req.params.id, (err, order) => {
+//             if (err || !order) {
+//                 return res.json({
+//                     status: 'not found',
+//                     statusCode: '404'
+//                 })
+//             }
+//             res.json({
+//                 status: 'OK',
+//                 statusCode: '200',
+//                 orders: JSON.parse(order)
+//             })
+//         })
+//     })
+//     .post(checkAuthenticated, (req, res) => {
+//         let { order, id } = req.body
+//         if (!order || !id) {
+//             return res.json({
+//                 status: 'Bad Request',
+//                 statusCode: '500'
+//             })
+//         }
+//         client.set('order' + id, order, (err, succ) => {
+//             if (err) return res.json({ status: 'failed' })
+//             res.json({
+//                 status: 'OK',
+//                 statusCode: '200',
+//             })
+//         })
+
+//     })
+
+
 router
     .route('/cacheOrders/:id')
     .get(checkAuthenticated, (req, res) => {
-        client.get('order' + req.params.id, (err, order) => {
-            if (err || !order) {
+        let id = req.params.id
+        client.get('orders' + id, (err, resp) => {
+            console.log(resp)
+            if (err || !resp) {
+                console.log('allo')
+                db.fetchAllOrders(id).then(orders => {
+                    res.json({
+                        status: 'OK',
+                        statusCode: '200',
+                        orders
+                    })
+                    client.set('orders' + id, JSON.stringify(orders), () => {})
+                }).catch(e => {
+                    return res.json({
+                        status: 'Bad Request',
+                        statusCode: '500'
+                    })
+                })
+            } else {
+                console.log('allo1')
                 return res.json({
-                    status: 'not found',
-                    statusCode: '404'
+                    status: 'OK',
+                    statusCode: '200',
+                    orders: JSON.parse(resp)
                 })
             }
-            res.json({
-                status: 'OK',
-                statusCode: '200',
-                orders: JSON.parse(order)
-            })
         })
     })
-    .post(checkAuthenticated, (req, res) => {
-        let { order, id } = req.body
-        if (!order || !id) {
-            return res.json({
-                status: 'Bad Request',
-                statusCode: '500'
-            })
-        }
-        client.set('order' + id, order, (err, succ) => {
-            if (err) return res.json({ status: 'failed' })
-            res.json({
-                status: 'OK',
-                statusCode: '200',
-            })
-        })
-
-    })
-
 
 
 module.exports = router
