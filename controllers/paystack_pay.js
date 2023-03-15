@@ -8,7 +8,7 @@ const { initializePayment } = require("../config/paystack")(
 
 module.exports = (req, res) => {
     let { id, comprise } = req.body
-    console.log(comprise)
+        // console.log(comprise)
     client.set('Order:' + id, comprise, (err, succ) => {
         if (err) return res.redirect("/dashboard?type=error&id=hejd78eikjs");
         // db.createOrder(id, comprise).then(respn => {
@@ -23,11 +23,11 @@ module.exports = (req, res) => {
         initializePayment(form, (error, body) => {
             if (error) {
                 //handle errors
-                console.log(error);
+                ///  console.log(error);
                 return res.redirect("/dashboard?type=error&id=pf3f84iorklj");
             }
             let response = JSON.parse(body);
-            console.log(response)
+            //console.log(response)
             if (!response.status) {
                 return res.end('wrob tin')
             }

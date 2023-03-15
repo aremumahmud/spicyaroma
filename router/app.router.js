@@ -124,7 +124,7 @@ router
     })
     .post(checkAuthenticated, (req, res) => {
         let { cart, id } = req.body
-        console.log(req.body)
+            // console.log(req.body)
         if (!cart || !id) {
             return res.json({
                 status: 'Bad Request',
@@ -182,9 +182,9 @@ router
     .get(checkAuthenticated, (req, res) => {
         let id = req.params.id
         client.get('orders' + id, (err, resp) => {
-            console.log(resp)
+            //console.log(resp)
             if (err || !resp) {
-                console.log('allo')
+                //  console.log('allo')
                 db.fetchAllOrders(id).then(orders => {
                     res.json({
                         status: 'OK',
@@ -199,7 +199,7 @@ router
                     })
                 })
             } else {
-                console.log('allo1')
+                // console.log('allo1')
                 return res.json({
                     status: 'OK',
                     statusCode: '200',
