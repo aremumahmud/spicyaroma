@@ -67,7 +67,9 @@ funcs.forEach(item => {
 
 })
 
-document.getElementById('cart-no').onclick = function() {
+document.getElementById('cart-no').onclick = function(e) {
+
+    console.log(e.target)
 
     let totalCartPrice = calculateCart(cart)
     document.getElementById('total-price').innerHTML = totalCartPrice
@@ -113,7 +115,17 @@ document.getElementById('back').onclick = function() {
     document.getElementById('shopping-cart').style.display = 'none'
     document.getElementById('modal').style.display = 'none'
 }
+document.getElementById('back4').onclick = function() {
+    document.getElementById('container').style.filter = 'none'
+    document.getElementById('shopping-cart').style.display = 'none'
+    document.getElementById('modal').style.display = 'none'
+}
 document.getElementById('back1').onclick = function() {
+    document.getElementById('container').style.filter = 'none'
+    document.getElementById('order-box').style.display = 'none'
+    document.getElementById('modal').style.display = 'none'
+}
+document.getElementById('back3').onclick = function() {
     document.getElementById('container').style.filter = 'none'
     document.getElementById('order-box').style.display = 'none'
     document.getElementById('modal').style.display = 'none'

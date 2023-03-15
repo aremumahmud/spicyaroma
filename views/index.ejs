@@ -26,7 +26,7 @@
 </head>
 
 <body class="body">
-    <div class="body">
+    <div class="body" id="whole-body">
         <input type="hidden" id="errorMsg" name="" value="<%=errorMsg%>">
         <input type="hidden" id="page" name="" value="<%=page%>">
 
@@ -44,8 +44,8 @@
                         <i class="fa fa-pen"></i>
                     </div>
                     <div id="cart-no" class="icon show">
-                        <small><b id="cart">0</b></small>
-                        <i class="fa fa-shopping-cart xl"></i>
+                        <small><b id="cart" class="azule">0</b></small>
+                        <i class="fa fa-shopping-cart xl azule"></i>
                     </div>
                 </div>
                 <div class="header-menu">
@@ -82,9 +82,10 @@
         </div>
         <div class="modal" id="modal">
             <div style="display: none;" id="shopping-cart" class="checkout">
-                <div class="content-buyed">
-                    <div class="title2">
-                        <p class="title">Shopping cart</p>
+                <div class="content-buyed" id="page1">
+                    <div class="title2 lined">
+                        <p class="title align" id="back4">&#8592; Cart</p>
+                        <p class="title align" id="foward">Pay &#8594;</p>
                     </div>
                     <div class="cart centereds" id="cart-display">
                         <p class="notice" id="empty-cart">nothing in your cart yet</p>
@@ -95,11 +96,11 @@
                 </div>
 
                 <!-- </div> -->
-                <div class="payment">
+                <div class="payment" id="paymentpage">
                     <div class="payment-choice">
                         <div class="contain">
                             <div class="head">
-                                <p class="title">Payment details</p>
+                                <p class="title" id="back5">&#8592; Payment details</p>
                                 <p class="subtitle">payment types</p>
                             </div>
                         </div>
@@ -153,8 +154,8 @@
 
             <div id="order-box" class="checkout" style="display: none;">
                 <div class=" content-buyed ">
-                    <div class="title2 ">
-                        <p class="title ">Orders</p>
+                    <div class="title2">
+                        <p class="title" id="back3">&#8592; Orders</p>
                     </div>
                     <div class="cart centereds" id="order-display">
                         <p class="notice" id="empty-order">You have no orders yet</p>
@@ -186,7 +187,6 @@
             </div>
         </div>
     </div>
-
 
 </body>
 <script src="/js/init.js"></script>

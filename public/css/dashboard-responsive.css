@@ -15,6 +15,7 @@
     }
     body {
         /* background-color: aliceblue; */
+        display: block;
         overflow-x: hidden;
         font-size: calc(10px + 2vmin);
         /* margin: 0; */
@@ -34,7 +35,8 @@
     .avatar,
     .name,
     .payment,
-    .map {
+    .map,
+    .contd {
         display: none;
     }
     .pinky {
@@ -62,15 +64,42 @@
     }
     .checkout {
         width: 90%;
-        overflow-x: hidden;
+        position: relative;
+        /* overflow-x: hidden; */
     }
     .modal {
-        width: auto;
-        position: unset;
+        width: 100%;
         height: 118%;
         overflow-x: hidden;
+        right: 0;
+        /* font-weight: 100; */
+        font-size: 10px;
     }
-    .content-buyed {
+    .content-buyed,
+    .payment,
+    .payment-choice {
         width: 100%;
+    }
+    .payment-choice {
+        height: 100%;
+    }
+    .body {
+        margin: 0;
+    }
+    .content-buyed .title2 {
+        margin-top: 0px;
+    }
+    .shw {
+        display: none
+    }
+    .lined {
+        display: flex;
+        justify-content: space-between;
+        flex-direction: row;
+    }
+    .align {
+        margin-left: 20px !important;
+        margin-right: 20px!important;
+        width: auto !important;
     }
 }

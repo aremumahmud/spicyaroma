@@ -234,8 +234,11 @@ hr {
     align-items: center;
     /* border: 1px solid black; */
     width: 80%;
+    min-height: 70px;
+    max-height: 70px;
     margin: 10px;
     cursor: pointer;
+    /* padding: 30px */
 }
 
 .item-img {
