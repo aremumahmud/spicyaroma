@@ -45,16 +45,19 @@ funcs.forEach(item => {
     document.getElementById(item._id).onclick = function() {
         if (!confirm('add this item to cart?')) return
         document.getElementById('cart-display').classList.remove('centereds')
-        if (!cart[item._id]) { document.getElementById('cart-display').innerHTML += createCartItem(item) }
+        if (!cart[item._id]) {
+            document.getElementById('cart-display').innerHTML += createCartItem(item)
+        }
         document.getElementById('empty-cart').style.display = 'none'
         document.getElementById('cart').innerHTML = Number(document.getElementById('cart').innerHTML) + 1
-        document.getElementById('cart1').innerHTML = Number(document.getElementById('cart').innerHTML) + 1
+        document.getElementById('cart1').innerHTML = Number(document.getElementById('cart1').innerHTML) + 1
         if (cart[item._id]) {
-            cacheCart(cart)
             document.getElementById('button_sub').disabled = false
             document.getElementById('button_sub').style.cursor = 'pointer'
             document.getElementById(item._id + 'amount').innerHTML = Number(document.getElementById(item._id + 'amount').innerHTML) + 1
-            return cart[item._id].quantity += 1
+            cart[item._id].quantity += 1
+            return cacheCart(cart)
+
         }
         cart[item._id] = {
             quantity: 1,
@@ -92,10 +95,13 @@ document.getElementById('cart-no').onclick = function(e) {
             document.getElementById('total-price2').value = totalCartPrice
         }
         document.getElementById(id + 'incre').onclick = function() {
+
             cart[id].quantity = Number(document.getElementById(id + 'amount').innerHTML) + 1
             document.getElementById(id + 'amount').innerHTML = Number(document.getElementById(id + 'amount').innerHTML) + 1
             let totalCartPrice = calculateCart(cart)
             cacheCart(cart)
+            document.getElementById('cart').innerHTML = Number(document.getElementById('cart').innerHTML) + 1
+            document.getElementById('cart1').innerHTML = Number(document.getElementById('cart1').innerHTML) + 1
             document.getElementById('total-price').innerHTML = totalCartPrice
             document.getElementById('total-price2').value = totalCartPrice
         }
@@ -105,9 +111,13 @@ document.getElementById('cart-no').onclick = function(e) {
             cart[id].quantity = Number(document.getElementById(id + 'amount').innerHTML) - 1
             document.getElementById(id + 'amount').innerHTML = Number(document.getElementById(id + 'amount').innerHTML) - 1
             let totalCartPrice = calculateCart(cart)
-            cacheCart(cart)
+                //teestkx
+            console.log('repet rinder')
+            document.getElementById('cart').innerHTML = Number(document.getElementById('cart').innerHTML) - 1
+            document.getElementById('cart1').innerHTML = Number(document.getElementById('cart1').innerHTML) - 1
             document.getElementById('total-price').innerHTML = totalCartPrice
             document.getElementById('total-price2').value = totalCartPrice
+            cacheCart(cart)
         }
     })
 }
@@ -140,6 +150,8 @@ document.getElementById('cart1-no').onclick = function(e) {
             document.getElementById(id + 'amount').innerHTML = Number(document.getElementById(id + 'amount').innerHTML) + 1
             let totalCartPrice = calculateCart(cart)
             cacheCart(cart)
+            document.getElementById('cart').innerHTML = Number(document.getElementById('cart').innerHTML) + 1
+            document.getElementById('cart1').innerHTML = Number(document.getElementById('cart1').innerHTML) + 1
             document.getElementById('total-price').innerHTML = totalCartPrice
             document.getElementById('total-price2').value = totalCartPrice
         }
@@ -150,6 +162,8 @@ document.getElementById('cart1-no').onclick = function(e) {
             document.getElementById(id + 'amount').innerHTML = Number(document.getElementById(id + 'amount').innerHTML) - 1
             let totalCartPrice = calculateCart(cart)
             cacheCart(cart)
+            document.getElementById('cart').innerHTML = Number(document.getElementById('cart').innerHTML) + 1
+            document.getElementById('cart1').innerHTML = Number(document.getElementById('cart1').innerHTML) + 1
             document.getElementById('total-price').innerHTML = totalCartPrice
             document.getElementById('total-price2').value = totalCartPrice
         }

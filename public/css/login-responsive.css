@@ -2,6 +2,12 @@
     /* body {
         background-color: blanchedalmond;
     } */
+    a,
+    a:hover,
+    a:focus {
+        outline: none;
+        -webkit-tap-highlight-color: transparent;
+    }
     .ad {
         display: none;
     }
