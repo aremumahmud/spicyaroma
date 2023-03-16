@@ -10,6 +10,7 @@
     <link rel="stylesheet" href="'https:/fonts.googleapis.com/css2?family=Nunito:wght@200&display=swap'">
     <link rel="stylesheet" href="/css/style2.css">
     <link rel="stylesheet" href="/css/style.css">
+    <link rel="stylesheet" href="/css/home-resp.css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?Tilt+Warp">
     <style>
         @font-face {
@@ -27,10 +28,11 @@
 
     <div class="box">
         <div class="general">
-            <div class="container">
-                <h1> Spicy Aroma</h1>
+            <div class="container fix">
+                <h1 class="hed"> Spicy Aroma</h1>
                 <div class="navbar">
-                    <ul>
+                    <h1 class="nav-resp" id="open-nav">&#x2630;</h1>
+                    <ul class="notresp">
                         <li><a href="#">HOME</a></li>
                         <li><a href="#">ABOUT</a></li>
                         <li><a href="#">MENUE</a></li>
@@ -42,6 +44,18 @@
                     </ul>
                 </div>
             </div>
+            <div>
+                <ul class="ul" id="nav">
+                    <li><a href="#">HOME</a></li>
+                    <li><a href="#">ABOUT</a></li>
+                    <li><a href="#">MENUE</a></li>
+                    <li>
+                        <a href="/login">Sign up</a></li>
+                    <li><a href=" # ">TEAM</a></li>
+                    <li><a href="# ">CONTACT</a></li>
+                    <li><a class="reservation " href="# ">RESERVATION</a></li>
+                </ul>
+            </div>
             <div class="centered ">
                 <div class="content ">
                     <p class="bold "> Welcome to Spicy Aroma</p>
@@ -51,7 +65,7 @@
                 <br>
                 <div class="search ">
                     <input type="text " placeholder="Search Food ">
-                    <input class="submit" type="submit" value="search">
+                    <a href="/login"><input class="submit" type="submit" value="search"></a>
                 </div>
 
 
@@ -86,7 +100,7 @@
 
     <div class="box3 ">
         <div class="img ">
-            <img src="4.png " alt=" ">
+            <img src="4.png" alt=" ">
         </div>
         <div>
             <h3>Why Choose Spicy Aroma</h3>
@@ -145,5 +159,28 @@
 
 <script type="module " src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js "></script>
 <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js "></script>
+<script>
+    document.body.onclick = function(e) {
+        if (e.target.getAttribute('id') == 'open-nav') {
+            return
+        }
+        document.getElementById('nav').style.display = 'none'
+        document.getElementById('open-nav').innerHTML = '☰'
+        document.body.style.overflowY = 'scroll'
+
+    }
+    document.getElementById('open-nav').onclick = function(e) {
+        if (e.target.innerHTML == '☰') {
+            document.getElementById('nav').style.display = 'block'
+            document.getElementById('open-nav').innerHTML = 'X'
+            document.body.style.overflowY = 'hidden'
+        } else {
+            document.getElementById('nav').style.display = 'none'
+            document.getElementById('open-nav').innerHTML = '☰'
+            document.body.style.overflowY = 'scroll'
+        }
+
+    }
+</script>
 
 </html>

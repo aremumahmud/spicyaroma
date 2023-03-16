@@ -221,3 +221,11 @@ body {
     background-blend-mode: normal;
     height: 100vh;
 }
+
+.nav-resp {
+    display: none;
+}
+
+.ul {
+    display: none;
+}

@@ -51,6 +51,7 @@ fetch('/cacheOrders/' + id)
         document.getElementById('order-display').classList.remove('centereds')
         document.getElementById('empty-order').style.display = 'none'
         document.getElementById('order-display').innerHTML += orders
+        document.getElementById('order2').innerHTML = e.orders.length
         document.getElementById('order1').innerHTML = e.orders.length
             //console.log(orders)
     })
@@ -64,7 +65,12 @@ document.getElementById('order1-no').onclick = function() {
     document.getElementById('modal').style.display = 'flex'
         //document.getElementById('order-display')
 }
-
+document.getElementById('order2-no').onclick = function() {
+    document.getElementById('container').style.filter = 'blur(13px)'
+    document.getElementById('order-box').style.display = 'flex'
+    document.getElementById('modal').style.display = 'flex'
+        //document.getElementById('order-display')
+}
 document.getElementById('foward').onclick = function() {
     document.getElementById('page1').style.display = 'none'
     document.getElementById('paymentpage').style.display = 'flex'

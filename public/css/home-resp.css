@@ -1,0 +1,45 @@
+@media only screen and (max-width:768px) {
+    .notresp {
+        display: none;
+    }
+    .box2 {
+        flex-direction: column;
+    }
+    .centered {
+        height: 90vh;
+    }
+    .hed {
+        padding-top: 10px;
+    }
+    input {
+        color: black
+    }
+    .nav-resp {
+        margin: 15px;
+        display: block;
+    }
+    .ul {
+        border: 1px solid;
+        position: fixed;
+        width: 100%;
+        top: 80px;
+        background-color: rgba(0, 0, 0, 0.829);
+        border-radius: 10px;
+        display: none;
+    }
+    .ul li a {
+        color: white;
+        text-decoration: none;
+        font-weight: bold;
+    }
+    .ul li {
+        padding: 10px;
+    }
+    .fix {
+        /* position: fixed; */
+        width: 100%;
+        /* background: rgba(0, 0, 0, 0.685) url('/imgs/food.jpg');
+        background-size: cover;
+        background-blend-mode: normal; */
+    }
+}

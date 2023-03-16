@@ -17,6 +17,7 @@ fetch('/cacheCart/' + id).then(res => {
         total += cart[item].quantity
     })
     document.getElementById('cart').innerHTML = total
+    document.getElementById('cart1').innerHTML = total
     document.getElementById('button_sub').disabled = false
     document.getElementById('button_sub').style.cursor = 'pointer'
 })
@@ -47,6 +48,7 @@ funcs.forEach(item => {
         if (!cart[item._id]) { document.getElementById('cart-display').innerHTML += createCartItem(item) }
         document.getElementById('empty-cart').style.display = 'none'
         document.getElementById('cart').innerHTML = Number(document.getElementById('cart').innerHTML) + 1
+        document.getElementById('cart1').innerHTML = Number(document.getElementById('cart').innerHTML) + 1
         if (cart[item._id]) {
             cacheCart(cart)
             document.getElementById('button_sub').disabled = false
@@ -68,6 +70,50 @@ funcs.forEach(item => {
 })
 
 document.getElementById('cart-no').onclick = function(e) {
+
+    console.log(e.target)
+
+    let totalCartPrice = calculateCart(cart)
+    document.getElementById('total-price').innerHTML = totalCartPrice
+    document.getElementById('total-price2').value = totalCartPrice
+    document.getElementById('container').style.filter = 'blur(13px)'
+    document.getElementById('shopping-cart').style.display = 'flex'
+    document.getElementById('modal').style.display = 'flex'
+    let ids = Object.keys(cart)
+    ids.forEach(id => {
+        document.getElementById(id + 'close').onclick = function() {
+            if (!confirm('wanna delete this from your cart!'))
+                return
+            delete cart[id]
+            cacheCart(cart)
+            document.getElementById(id + 'itemId').style.display = 'none'
+            let totalCartPrice = calculateCart(cart)
+            document.getElementById('total-price').innerHTML = totalCartPrice
+            document.getElementById('total-price2').value = totalCartPrice
+        }
+        document.getElementById(id + 'incre').onclick = function() {
+            cart[id].quantity = Number(document.getElementById(id + 'amount').innerHTML) + 1
+            document.getElementById(id + 'amount').innerHTML = Number(document.getElementById(id + 'amount').innerHTML) + 1
+            let totalCartPrice = calculateCart(cart)
+            cacheCart(cart)
+            document.getElementById('total-price').innerHTML = totalCartPrice
+            document.getElementById('total-price2').value = totalCartPrice
+        }
+
+        document.getElementById(id + 'decre').onclick = function() {
+            if (Number(document.getElementById(id + 'amount').innerHTML) == 1) return
+            cart[id].quantity = Number(document.getElementById(id + 'amount').innerHTML) - 1
+            document.getElementById(id + 'amount').innerHTML = Number(document.getElementById(id + 'amount').innerHTML) - 1
+            let totalCartPrice = calculateCart(cart)
+            cacheCart(cart)
+            document.getElementById('total-price').innerHTML = totalCartPrice
+            document.getElementById('total-price2').value = totalCartPrice
+        }
+    })
+}
+
+
+document.getElementById('cart1-no').onclick = function(e) {
 
     console.log(e.target)
 

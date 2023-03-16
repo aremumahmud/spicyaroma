@@ -330,3 +330,7 @@ hr {
 .no {
     border: 1px solid yellow;
 }
+
+#foward {
+    display: none;
+}
