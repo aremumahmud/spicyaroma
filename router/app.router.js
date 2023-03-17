@@ -22,7 +22,7 @@ router
     .get(checkAuthenticated, middleWareFactory('sucess-login'), (req, res) => {
         // console.log(req.user)
         db.getAllProducts().then(products => {
-            console.log(products)
+            //  console.log(products)
             let parameters, errorMsg, page;
 
             if (req.query.type == 'error') {
