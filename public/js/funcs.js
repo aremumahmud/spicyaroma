@@ -16,7 +16,7 @@ function createItem(item) {
 
 function createCartItem(item, qty = 1) {
     return `<div class="item" id="${item._id+'itemId'}">
-    <div class="item-img ${item.name.toLowerCase()}"></div>
+    <div class="item-img" style='background-image:url(${item.picture})'></div>
     <div class="item-title">
         <div class="head2">
             <p class="title">${item.name}</p>

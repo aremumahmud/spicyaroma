@@ -79,7 +79,9 @@
                 </p>
                 <% }else{ %>
                     <% let json = JSON.stringify(products)%>
-                        <input type="hidden" id="products" value=<%=json %>>
+                        <p style="display: none;" id="products">
+                            <%=json %>
+                        </p>
                         <input type="hidden" id="_id" value=<%=id %>>
                         <%}%>
         </div>

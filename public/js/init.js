@@ -3,7 +3,7 @@ let funcs = []
 let menus = []
 let cart = {}
 let orders = []
-let array = JSON.parse(document.getElementById('products').value)
+let array = JSON.parse(document.getElementById('products').innerHTML)
 
 function take1(array) {
     let count = 0
