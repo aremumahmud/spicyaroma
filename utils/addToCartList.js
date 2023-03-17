@@ -10,9 +10,9 @@ module.exports = (id, orders) => {
         // console.log(resp)
         if (err || !resp) {
             client.set('orders' + id, JSON.stringify([orders]), () => {})
-            console.log('allo')
+                // console.log('allo')
         } else {
-            console.log('allo1')
+            // console.log('allo1')
             let orderArray = JSON.parse(resp)
             orderArray.push(orders)
             client.set('orders' + id, JSON.stringify(orderArray), () => {})

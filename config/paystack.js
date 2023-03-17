@@ -1,4 +1,14 @@
-const MySecretKey = "Bearer sk_test_75592d2e061e4ff6886f54943992f8b2d1961c00";
+//const MySecretKey = "Bearer sk_test_75592d2e061e4ff6886f54943992f8b2d1961c00";
+const MODE = process.env.APP_MODE
+let decider = {
+    0: 'PRODUCTION_PAYPAL_SECRET_KEY',
+    1: 'DEVELOPMENT_PAYPAL_SECRET_KEY'
+}
+
+const MySecretKey = MODE == 'production' ? process.env[decider[0]] : process.env[decider[1]]
+
+
+
 const paystack = (request) => {
     //replace the secret key with that from your paystack account
     const initializePayment = (form, mycallback) => {

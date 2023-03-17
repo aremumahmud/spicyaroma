@@ -114,7 +114,7 @@ router
                     statusCode: '404'
                 })
             }
-            console.log(cart)
+            //console.log(cart)
             res.json({
                 status: 'OK',
                 statusCode: '200',

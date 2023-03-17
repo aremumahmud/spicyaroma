@@ -5,10 +5,15 @@
     font-family: 'Nunito', sans-serif;
 }
 
+html {
+    overflow-y: scroll;
+}
+
 body {
     height: 100vh;
     border: none;
     font-family: 'Nunito', sans-serif;
+    overflow-y: scroll;
 }
 
 .general {

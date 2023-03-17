@@ -1,10 +1,4 @@
 @media only screen and (max-width:768px) {
-    a,
-    a:hover,
-    a:focus {
-        outline: none;
-        -webkit-tap-highlight-color: transparent;
-    }
     .notresp,
     .hide {
         display: none;

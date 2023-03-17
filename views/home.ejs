@@ -33,34 +33,33 @@
                 <div class="navbar">
                     <h1 class="nav-resp" id="open-nav">&#x2630;</h1>
                     <ul class="notresp">
-                        <li><a href="#">HOME</a></li>
-                        <li><a href="#">ABOUT</a></li>
-                        <li><a href="#">MENUE</a></li>
+                        <li><a href="/">HOME</a></li>
+                        <li><a href="#about">ABOUT</a></li>
+                        <li><a href="#menubox">MENU</a></li>
                         <li>
-                            <a href="/login">Sign up</a></li>
-                        <li><a href=" # ">TEAM</a></li>
-                        <li><a href="# ">CONTACT</a></li>
-                        <li><a class="reservation " href="# ">RESERVATION</a></li>
+                            <a href="/register">Sign up</a></li>
+                        <li><a class="reservation" href="#contact">CONTACT</a></li>
+
                     </ul>
                 </div>
             </div>
             <div>
                 <ul class="ul" id="nav">
-                    <li><a href="#">HOME</a></li>
-                    <li><a href="#">ABOUT</a></li>
-                    <li><a href="#">MENUE</a></li>
+                    <li><a href="/">HOME</a></li>
+                    <li><a href="#about">ABOUT</a></li>
+                    <li><a href="#menubox">MENU</a></li>
                     <li>
-                        <a href="/login">Sign up</a></li>
-                    <li><a href=" # ">TEAM</a></li>
-                    <li><a href="# ">CONTACT</a></li>
-                    <li><a class="reservation " href="# ">RESERVATION</a></li>
+                        <a href="/register">Sign up</a></li>
+
+                    <li><a href="#contact">CONTACT</a></li>
+
                 </ul>
             </div>
             <div class="centered ">
                 <div class="content ">
                     <p class="bold "> Welcome to Spicy Aroma</p>
                     <h3>Rich Healthy and Nutricious Food</h3>
-                    <p>Spicy Aroma is located in Nigerin.We have some amaizin recipies and the most talented chefs in the country.</p>
+                    <p>Spicy Aroma is located in Nigeria. We have some amazing recipies and the most talented chefs in the country.</p>
                 </div>
                 <br>
                 <div class="search ">
@@ -74,7 +73,7 @@
     </div>
 
 
-    <div class="box2 ">
+    <div class="box2" id='menubox'>
         <div class="food-wrapper ">
             <div class="fries "></div>
             <h3>Bowl of Fries</h3>
@@ -98,7 +97,7 @@
     </div>
 
 
-    <div class="box3 ">
+    <div class="box3" id="about">
         <div class="img hide">
             <img src="/imgs/4.png" alt=" ">
         </div>
@@ -114,7 +113,7 @@
 
     </div>
     <div class="logo ">.</div>
-    <footer>
+    <footer id="contact">
         <div class="waves ">
             <div class="wave" id="wave1"></div>
             <div class="wave" id="wave2"></div>
@@ -167,6 +166,8 @@
         document.getElementById('nav').style.display = 'none'
         document.getElementById('open-nav').innerHTML = '☰'
         document.body.style.overflowY = 'scroll'
+        e.target.click()
+
 
     }
     document.getElementById('open-nav').onclick = function(e) {

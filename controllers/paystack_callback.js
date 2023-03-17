@@ -25,7 +25,7 @@ module.exports = (req, res) => {
         if (response.data.status == 'success' && response.data.gateway_response == 'Successful') {
             console.log('anai')
             let _id = response.data.metadata.full_name.split(":")[1]
-            console.log(response.data.metadata.full_name)
+                //  console.log(response.data.metadata.full_name)
             client.get('Order:' + _id, (err, order) => {
                 // console.log(err, order)
                 if (err) return res.redirect("/dashboard?type=error&id=hejd78eikjs");
@@ -49,10 +49,10 @@ module.exports = (req, res) => {
                         .save()
                         .then((payReciept) => {
                             if (!payReciept) {
-                                console.log('here 2')
+                                //  console.log('here 2')
                                 return res.redirect("/dashboard?type=error&id=hejd78eikjs");
                             }
-                            console.log('jnk,')
+                            //  console.log('jnk,')
                             client.set('cart' + _id, '', (err, succ) => {
                                 console.log('succeded')
                             })
@@ -61,7 +61,7 @@ module.exports = (req, res) => {
                             res.redirect("/dashboard");
                         })
                         .catch((e) => {
-                            console.log(e, 'here 2')
+                            //console.log(e, 'here 2')
                             res.redirect("/dashboard?type=error&id=hejd78eikjs");
                         });
                 }).catch(err => {
