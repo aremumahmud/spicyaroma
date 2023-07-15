@@ -10,6 +10,7 @@ mongoose.connect(Uri).then((succ) => {
     console.log('connected')
 }).catch(err => {
     console.log('an error occured')
+    console.log(err)
 })
 
 class Db {

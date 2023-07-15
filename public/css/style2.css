@@ -3,7 +3,7 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    font-family: 'poppins', sans-serif;
+    font-family: 'Open Sans', sans-serif;
 }
 
 
@@ -14,6 +14,10 @@
     min-height: 100vh;
     background: #333;
 } */
+
+body {
+    background-color: #000 !important;
+}
 
 footer {
     position: relative;
