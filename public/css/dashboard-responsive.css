@@ -18,9 +18,9 @@
         /* border: 1px solid; */
         width: 100%;
     }
-    .container {
+    /* .container {
         overflow-x: hidden;
-    }
+    } */
     body {
         /* background-color: aliceblue; */
         display: block;
@@ -48,10 +48,6 @@
     .item-img {
         display: none;
     }
-    .pinky {
-        margin-left: 20px;
-        margin-right: 20px;
-    }
     .about-stock .title {
         margin-left: 20px;
         margin-right: 20px;
@@ -61,7 +57,7 @@
     }
     .menu .menu-card {
         box-shadow: none;
-        margin-bottom: 40px;
+        margin-bottom: 0px;
     }
     .show {
         display: flex;

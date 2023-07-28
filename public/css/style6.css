@@ -1,13 +1,23 @@
-@import url('https:/fonts.googleapis.com/css2?family=Nunito:wght@200&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Nunito:wght@200&family=Raleway:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
 * {
-    font-family: 'Nunito', sans-serif;
+    /* font-size: calc(5px + 2vmin); */
+    margin: 0;
+    box-sizing: border-box;
+    font-family: Raleway, Arial, Helvetica, 'sans-serif';
+    /* color: #cccc */
+    /* font: 400 16px/24px Macan, Helvetica Neue, Helvetica, Arial, sans-serif; */
+}
+
+.description {
+    font-size: medium !important;
+    color: #ffffff;
 }
 
 .body {
     display: flex;
     justify-content: center;
     width: 100%;
-    background-color: #000 !important;
+    background-color: #444242 !important;
 }
 
 .icon {
@@ -36,7 +46,10 @@ header {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    line-height: 0.5em;
+    padding: 20px !important;
+    margin-top: 30px;
+    color: #ccc;
+    /* line-height: 0.5em; */
     /* flex-direction: column; */
     /* margin-left: 50px;
     margin-right: 50px; */
@@ -45,12 +58,10 @@ header {
 .head .title {
     font-weight: bolder;
     font-size: 30px;
-    color: #ccc;
 }
 
 .head .subtitle {
     font-size: 15px;
-    color: #ccc;
 }
 
 .header-menu {
@@ -83,16 +94,17 @@ header {
     color: #9e9797;
 }
 
-hr {
+
+/* hr {
     fill: #ccc;
     margin-left: 100px;
     margin-right: 100px;
-}
+} */
 
 .title12 {
     font-weight: bolder;
     font-size: 20px;
-    color: #ccc
+    color: #ffffff;
 }
 
 .show {
@@ -121,7 +133,7 @@ hr {
     background-repeat: no-repeat;
     background-size: cover;
     width: 100%;
-    height: 300px;
+    height: 250px;
     cursor: pointer;
     border-radius: 10px;
     box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
@@ -130,20 +142,24 @@ hr {
 .title p {
     font-weight: bolder;
     font-size: 20px;
-    color: #ccc;
+    /* color: #ccc; */
 }
 
 .options {
     display: flex;
-    justify-content: space-between;
-    align-items: center;
+    justify-content: start;
+    /* align-items: center; */
+    /* padding: 15px; */
+    flex-direction: column;
+    margin-bottom: 10px;
 }
 
 .pinky {
-    color: rgba(158, 15, 15, 0.89);
+    color: white;
     cursor: pointer;
     margin-top: 0;
     margin-bottom: 0;
+    text-align: left;
 }
 
 .pinky:hover {
@@ -152,9 +168,15 @@ hr {
 
 .buy {
     /* font-weight: 1000; */
-    color: green;
+    /* color: #ffffff; */
     margin-top: 0;
     margin-bottom: 0;
+    padding: 10px;
+    background-color: #ccc;
+    /* background-color: rgb(148 148 148 / 65%); */
+    text-align: center;
+    width: 100%;
+    border-radius: 10px;
     /* background-color: rgb(78, 145, 78); */
 }
 
@@ -337,4 +359,14 @@ hr {
 
 #foward {
     display: none;
+}
+
+.modal_real {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background-color: #ffffff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }

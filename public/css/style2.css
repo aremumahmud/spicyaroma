@@ -1,9 +1,11 @@
-@import url('https://fonts.googleapis.com/css?family=poppins:200,300,400,500,600,700,800,900&display=swp');
+@import url('https://fonts.googleapis.com/css2?family=Nunito:wght@200&family=Raleway:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
 * {
+    /* font-size: calc(5px + 2vmin); */
     margin: 0;
-    padding: 0;
     box-sizing: border-box;
-    font-family: 'Open Sans', sans-serif;
+    font-family: Raleway, Arial, Helvetica, 'sans-serif';
+    /* color: #cccc */
+    /* font: 400 16px/24px Macan, Helvetica Neue, Helvetica, Arial, sans-serif; */
 }
 
 
@@ -15,22 +17,22 @@
     background: #333;
 } */
 
-body {
+
+/* body {
     background-color: #000 !important;
-}
+} */
 
 footer {
     position: relative;
     width: 100%;
-    background: rgb(255, 254, 203);
-    ;
+    background-color: black !important;
     min-height: 100px;
     padding: 20px 50px;
     display: flex;
     justify-content: center;
     align-items: center;
     flex-direction: column;
-    color: black;
+    /* color: black; */
 }
 
 footer .social_icon,
@@ -41,6 +43,7 @@ footer .menu {
     align-items: center;
     margin: 15px 0;
     flex-wrap: wrap;
+    padding-left: 0 !important;
 }
 
 footer .social_icon li,
@@ -51,7 +54,7 @@ footer .menu li {
 footer .social_icon li a,
 footer .menu li a {
     font-size: 2em;
-    color: black;
+    /* color: black; */
     margin: 0 10px;
     display: inline-block;
     transition: 0.5s;
@@ -63,12 +66,13 @@ footer .social_icon li a:hover {
 
 footer .menu li a {
     font-size: 2em;
-    color: black;
+    color: white;
     margin: 0 10px;
     display: inline-block;
     transition: 0.5s;
     text-decoration: none;
     opacity: 0.75;
+    font-size: small;
 }
 
 footer .menu li a:hover {
@@ -76,7 +80,7 @@ footer .menu li a:hover {
 }
 
 footer p {
-    color: black;
+    /* color: black; */
     text-align: center;
     margin-top: 15px;
     margin-bottom: 10px;

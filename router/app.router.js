@@ -16,10 +16,39 @@ router
         res.render('home.ejs')
     })
 
-
 router
-    .route('/dashboard')
-    .get(checkAuthenticated, middleWareFactory('sucess-login'), (req, res) => {
+    .route('/about')
+    .get((req, res) => {
+        res.render('about.ejs')
+    })
+router
+    .route('/booking')
+    .get((req, res) => {
+        res.render('booking.ejs')
+    })
+router
+    .route('/failed')
+    .get((req, res) => {
+        res.render('failed.ejs')
+    })
+router
+    .route('/add_payment')
+    .get((req, res) => {
+        res.render('pay.ejs')
+    })
+router
+    .route('/booking_success')
+    .get((req, res) => {
+        res.render('booking_sucess.ejs')
+    })
+router
+    .route('/book_mistress')
+    .post((req, res) => {
+        res.redirect('/booking_success')
+    })
+router
+    .route('/shopxxx')
+    .get(middleWareFactory('sucess-login'), (req, res) => {
         // console.log(req.user)
         db.getAllProducts().then(products => {
             //  console.log(products)
@@ -34,8 +63,7 @@ router
             }
             // return res.render('error.ejs')
             res.render("index.ejs", {
-                email: req.user.email,
-                id: req.user._id,
+
                 products,
                 errorMsg,
                 page

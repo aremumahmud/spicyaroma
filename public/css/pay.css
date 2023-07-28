@@ -1,0 +1,140 @@
+@import url('https://fonts.googleapis.com/css2?family=Nunito:wght@200&family=Raleway:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+* {
+    /* font-size: calc(5px + 2vmin); */
+    margin: 0;
+    box-sizing: border-box;
+    font-family: Raleway, Arial, Helvetica, 'sans-serif';
+    color: #cccc
+    /* font: 400 16px/24px Macan, Helvetica Neue, Helvetica, Arial, sans-serif; */
+}
+
+.container {
+    border: 1px solid;
+    width: 100%;
+    padding: 10px;
+    background-color: black;
+}
+
+header {
+    padding: 10px;
+    margin-bottom: 20px;
+    background-color: rgba(58, 53, 53, 0.288);
+    border-radius: 10px;
+    text-align: center;
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+}
+
+header p {
+    color: red !important;
+}
+
+.fade {
+    color: #ccc;
+    font-size: small;
+    margin-left: 20px;
+}
+
+.fade p:first-child {
+    text-transform: uppercase;
+    margin-bottom: 3px;
+}
+
+.payment_mode {
+    /* border: 1px solid; */
+    border-radius: 10px;
+    padding: 15px;
+    margin-top: 10px;
+    background-color: rgba(58, 53, 53, 0.288);
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+}
+
+.payment_mode p:first-child {
+    color: #ffffff;
+}
+
+.fadein {
+    font-size: small;
+}
+
+.form-one {
+    /* border: 1px solid; */
+    border-radius: 10px;
+    padding: 15px;
+    margin-top: 10px;
+    background-color: rgba(58, 53, 53, 0.288);
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+}
+
+.form-one .input {
+    display: flex;
+    justify-content: space-between;
+    padding: 10px;
+    align-items: center;
+}
+
+.form-one .input p {
+    color: #ffffff;
+}
+
+.form-one .input input {
+    width: 70%;
+    padding: 10px;
+    outline: none;
+    background-color: transparent;
+    border: none;
+    text-align: center;
+    color: #ffffff;
+}
+
+hr {
+    border-bottom: 0.1px;
+    border-color: #cccccca1;
+}
+
+@media (min-width:481px)and (max-width:890px) {
+    .container {
+        width: 90%;
+        border: none;
+        /* background-color: rgba(0, 0, 0, 0.842); */
+        box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px
+    }
+    .wrapper {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background-color: black;
+    }
+}
+
+@media (min-width:891px) {
+    .container {
+        width: 50%;
+        border: none;
+        /* The `background-color: rgba(0, 0, 0, 0.842);` property is setting the background color of an
+      element to a semi-transparent black color. The `rgba` stands for Red, Green, Blue, and Alpha,
+      where the first three values represent the RGB values (in this case, all zeros for black) and
+      the fourth value represents the opacity (0.842, which is approximately 84.2% opaque). This
+      creates a slightly transparent black background color for the element. */
+        /* background-color: rgba(0, 0, 0, 0.842); */
+        box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px
+    }
+    .wrapper {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background-color: black;
+    }
+}
+
+footer p {
+    font-size: smaller;
+    padding: 10px;
+}
+
+.error {
+    font-size: smaller;
+    text-align: center;
+    color: red;
+    margin-top: 10px;
+    display: none;
+}

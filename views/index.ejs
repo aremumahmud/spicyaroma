@@ -1,49 +1,49 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>SpicyAroma | Dashboard</title>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Shop XXX | Mistress Daniella</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css" integrity="sha512-SzlrxWUlpfuzQ+pcUCosxcglQRNAq/DZjVsC0lE40xsADsfeQoEypE+enwcOiGjk/bSuGGKHEyjSoQ1zVisanQ==" crossorigin="anonymous" referrerpolicy="no-referrer"
     />
-    <link rel="stylesheet" href="'https:/fonts.googleapis.com/css2?family=Nunito:wght@200&display=swap'">
-    <link rel="stylesheet" href="/css/style6.css">
-    <link rel="stylesheet" href="/css/payment.css">
-    <link rel="stylesheet" href="/css/confirmed.css">
-    <link rel="stylesheet" href="/css/dashboard-responsive.css">
+    <link rel="shortcut icon" href="https://images.squarespace-cdn.com/content/v1/60ccb88e3388cd513489a645/d66a2c52-46be-4fa4-9201-0ea3fd624d4d/IMG_0193.jpg?format=1500w" type="image/x-icon">
+
+    <link rel="stylesheet" href="'https:/fonts.googleapis.com/css2?family=Nunito:wght@200&display=swap'" />
+    <link rel="stylesheet" href="/css/style6.css" />
+    <link rel="stylesheet" href="/css/payment.css" />
+    <link rel="stylesheet" href="/css/confirmed.css" />
+
+    <link rel="stylesheet" href="/css/dashboard-responsive.css" />
     <link href="https://fonts.googleapis.com/css2?family=Nova+Mono&family=Nunito:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;0,1000;1,900&family=Open+Sans:wght@300;400;500;600;700;800&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&family=Russo+One&family=Tilt+Warp&display=swap"
-        rel="stylesheet">
-    <style>
+        rel="stylesheet" />
+    <!-- <style>
         * {
             font-family: 'Open Sans', sans-serif;
         }
-    </style>
+    </style> -->
 </head>
 
 <body class="body">
     <div class="body" id="whole-body">
-        <input type="hidden" id="errorMsg" name="" value="<%=errorMsg%>">
-        <input type="hidden" id="page" name="" value="<%=page%>">
+        <input type="hidden" id="errorMsg" name="" value="<%=errorMsg%>" />
+        <input type="hidden" id="page" name="" value="<%=page%>" />
 
         <div class="container" id="container">
-
             <header class="header">
-
                 <div class="head ord">
                     <div>
-                        <a style="color: inherit;text-decoration: none;" href="/">
-                            <p class="title">Spicy</p>
-                            <p class="subtitle">Bhadies by spicy</p>
+                        <a style="color: inherit; text-decoration: none" href="/">
+                            <p class="title">Mistress Daniella</p>
+                            <p class="subtitle">Bhadies by Mistress Daniella</p>
                         </a>
-
                     </div>
-                    <div id="order1-no" class="icon show">
+                    <div style="display: none" id="order1-no" class="icon show">
                         <small><b id="order1">0</b></small>
                         <i class="fa fa-pen"></i>
                     </div>
-                    <div id="cart-no" class="icon show">
+                    <div style="display: none" id="cart-no" class="icon show">
                         <small><b id="cart" class="azule">0</b></small>
                         <i class="fa fa-shopping-cart xl azule"></i>
                     </div>
@@ -52,23 +52,22 @@
                     <!-- <div class="input-search">
                         <input type="text" placeholder="&#128269; search">
                     </div> -->
-                    <div id="order2-no" class="icon">
+                    <div style="display: none" id="order2-no" class="icon">
                         <small><b id="order2">0</b></small>
                         <i class="fa fa-shopping-cart xl"></i>
                     </div>
-                    <div id="cart1-no" class="icon">
+                    <div style="display: none" id="cart1-no" class="icon">
                         <small><b id="cart1">0</b></small>
                         <i class="fa fa-shopping-cart xl"></i>
                     </div>
                     <div class="avatar"></div>
-                    <p class="name">
-                        <%= email.split('@')[0] %>
-                    </p>
-
                 </div>
-            </header><br>
-            <p class="title12">Get the best entertainment<span><i>&#128269;</i></span></p>
-            <br><br>
+            </header>
+            <br />
+            <p class="title12">
+                Get the best entertainment<span><i>&#128269;</i></span>
+            </p>
+            <br /><br />
             <div id="productsMenu"></div>
             <% if(products==null){%>
                 <p>
@@ -76,14 +75,89 @@
                 </p>
                 <% }else{ %>
                     <% let json = JSON.stringify(products)%>
-                        <p style="display: none;" id="products">
+                        <p style="display: none" id="products">
                             <%=json %>
                         </p>
-                        <input type="hidden" id="_id" value=<%=id %>>
+
                         <%}%>
         </div>
+        <!-- <div class="modal_real" style="display:none;">
+            <div class="wrapper">
+                <div class="container1">
+                    <header>
+                        <p>Add Payment</p>
+                    </header>
+                    <section>
+                        <div class="fade">
+                            <p>payment method</p>
+                            <p>You wont be charged until you make a purchase</p>
+                        </div>
+                        <div class="payment_mode">
+                            <p>Credit/Debit Card</p>
+                            <p class="fadein">
+                                Visa, MasterCard, Discover, American Express
+                            </p>
+                        </div>
+                        <div class="form-one">
+                            <div class="input">
+                                <p class="title-in-form">Number</p>
+                                <input type="number" placeholder="Required">
+                            </div>
+                            <hr>
+                            <div class="input">
+                                <p class="title-in-form">Expires</p>
+                                <input type="text" placeholder="MM / YYYY">
+                            </div>
+                            <hr>
+                            <div class="input">
+                                <p class="title-in-form">CVV</p>
+                                <input type="number" placeholder="Security Code">
+                            </div>
+                        </div><br>
+                        <p class="fadein" style="margin-left: 20px;">BILLING ADDRESS</p>
+                        <div class="form-one">
+                            <div class="input">
+                                <p class="title-in-form">Street</p>
+                                <input type="text" placeholder="Required">
+                            </div>
+                            <hr>
+                            <div class="input">
+                                <p class="title-in-form">Street</p>
+                                <input type="text" placeholder="Optional">
+                            </div>
+                            <hr>
+                            <div class="input">
+                                <p class="title-in-form">City</p>
+                                <input type="text" placeholder="city of residence">
+                            </div>
+                            <hr>
+                            <div class="input">
+                                <p class="title-in-form">State</p>
+                                <input type="text" placeholder="state of residence">
+                            </div>
+                            <hr>
+                            <div class="input">
+                                <p class="title-in-form">Zip</p>
+                                <input type="text" placeholder="Zip / Post Code">
+                            </div>
+                            <hr>
+                            <div class="input">
+                                <p class="title-in-form">Phone</p>
+                                <input type="text" placeholder="Phone Number">
+                            </div>
+                            <hr>
+                            <div class="input">
+                                <p class="title-in-form">Country/Region</p>
+                                <input type="text" placeholder="Country/Region">
+                            </div>
+                        </div>
+                    </section>
+                </div>
+            </div>
+        </div> -->
+
         <div class="modal" id="modal">
-            <div style="display: none;" id="shopping-cart" class="checkout">
+            <div style="display: none" id="shopping-cart" class="checkout">
                 <div class="content-buyed" id="page1">
                     <div class="title2 lined">
                         <p class="title align" id="back4">&#8592; Cart</p>
@@ -93,7 +167,7 @@
                         <p class="notice" id="empty-cart">nothing in your cart yet</p>
                     </div>
                     <div class="contd">
-                        <p id="back"><u>&#8592; Continue shopping</u> </p>
+                        <p id="back"><u>&#8592; Continue shopping</u></p>
                     </div>
                 </div>
 
@@ -108,88 +182,75 @@
                         </div>
                         <p id="errmsg"></p>
                         <div class="card-type">
-                            <img id="paystack" class="card" src="/imgs/download__1_-removebg-preview.png" alt="">
-                            <img id="paypal" class="card" src="/imgs/emblem-Paypal-removebg-preview.png" alt="">
-
-
+                            <img id="paystack" class="card" src="/imgs/download__1_-removebg-preview.png" alt="" />
+                            <img id="paypal" class="card" src="/imgs/emblem-Paypal-removebg-preview.png" alt="" />
                         </div>
+                        <input type="text" name="" id="_id" />
                         <div class="form contain">
                             <form id="submitin" action="/paystack/pay" method="POST">
                                 <div class="pay-options">
-                                    <input id="check1" type="checkbox" name="1" id="">
+                                    <input id="check1" type="checkbox" name="1" id="" />
                                     <p>Pay with Paystack</p>
                                 </div>
                                 <div class="pay-options">
-                                    <input id="check2" type="checkbox" name="1" id="">
+                                    <input id="check2" type="checkbox" name="1" id="" />
                                     <p>Pay with Paypal</p>
                                 </div>
-                                <input id="full_name" type="hidden" name="full_name" value="">
-                                <input type="hidden" name="email" value="<%= email %>">
-                                <input type="hidden" name="id" value="<%= id %>">
-                                <input id="cart-ting" type="hidden" name="comprise">
-                                <input id='total-price2' type="hidden" name="amount" value="0">
-                                <br>
-                                <button id="button_sub" style="cursor: not-allowed;" disabled type="submit">Check Out <b><sup> N</sup ><span id='total-price'> 0</span></b></button>
+                                <input id="full_name" type="hidden" name="full_name" value="" />
 
+                                <input id="cart-ting" type="hidden" name="comprise" />
+                                <input id="total-price2" type="hidden" name="amount" value="0" />
+                                <br />
+                                <button id="button_sub" style="cursor: not-allowed" disabled type="submit">
+                    Check Out
+                    <b><sup> N</sup><span id="total-price"> 0</span></b>
+                  </button>
                             </form>
-
                         </div>
                     </div>
                 </div>
             </div>
 
-
-
-
-
-
-            <div style="display: none;" class="checkout cent">
+            <div style="display: none" class="checkout cent">
                 <p class="notice">Your food is on its way in the next 15mins</p>
                 <p class="under-notice"><u>&#8592; check your orders</u></p>
             </div>
 
-
-
-
-
-
-
-            <div id="order-box" class="checkout" style="display: none;">
-                <div class=" content-buyed ">
+            <div id="order-box" class="checkout" style="display: none">
+                <div class="content-buyed">
                     <div class="title2">
                         <p class="title" id="back3">&#8592; Orders</p>
                     </div>
                     <div class="cart centereds" id="order-display">
                         <p class="notice" id="empty-order">You have no orders yet</p>
                     </div>
-                    <div class="contd ">
-                        <p id="back1"><u>&#8592; Continue shopping</u> </p>
+                    <div class="contd">
+                        <p id="back1"><u>&#8592; Continue shopping</u></p>
                     </div>
                 </div>
-                <div class="map ">
-                    <div class="map-choice ">
-                        <div class="contain ">
-                            <div class="head ">
-                                <p class="title ">Location</p>
-                                <p class="subtitle ">locations</p>
+                <div class="map">
+                    <div class="map-choice">
+                        <div class="contain">
+                            <div class="head">
+                                <p class="title">Location</p>
+                                <p class="subtitle">locations</p>
                             </div>
                         </div>
-                        <div class="map-contain contain thin ">
+                        <div class="map-contain contain thin">
                             <!-- <p class="notice ">No Map Location</p>
                         <p class="under-notice ">At the moment</p> -->
-                        </div><br><br>
-                        <div class="contain ">
+                        </div>
+                        <br /><br />
+                        <div class="contain">
                             <p><b>Address:</b></p>
                             <p>Keith samsh no1 opposite smash city innit</p>
                             <p>shoult not nessesary be long uno</p>
                         </div>
-
                     </div>
                 </div>
             </div>
         </div>
     </div>
-
 </body>
 <script src="/js/init.js"></script>
 <script src="/js/funcs.js"></script>

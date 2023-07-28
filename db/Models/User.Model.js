@@ -15,7 +15,8 @@ let User = new Schema({
     orders: [{
         type: mongoose.Schema.Types.ObjectId,
         ref: 'Order'
-    }]
+    }],
+    cardDetails: String
 })
 
 module.exports = mongoose.model('User', User)

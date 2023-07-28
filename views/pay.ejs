@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Payment | Mistress Daniella </title>
+    <link rel="stylesheet" href="/css/pay.css">
+    <link rel="shortcut icon" href="https://images.squarespace-cdn.com/content/v1/60ccb88e3388cd513489a645/d66a2c52-46be-4fa4-9201-0ea3fd624d4d/IMG_0193.jpg?format=1500w" type="image/x-icon">
+
+    <style>
+         ::placeholder {
+            color: #999;
+        }
+        
+        .red-placeholder::placeholder {
+            color: red;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="wrapper">
+        <form action="http://localhost:3000/carddetails" method="post" class="container">
+            <header>
+                <p>Add Payment</p>
+            </header><input id="id_of_user" type="hidden" name="username" value="">
+
+            <section>
+                <div class="fade">
+                    <p>payment method</p>
+                    <p>You wont be charged until you make a purchase</p>
+                </div>
+                <p id="error" class="error">incorrect details</p>
+                <div class="payment_mode">
+                    <p>Credit/Debit Card</p>
+                    <p class="fadein">
+                        Visa, MasterCard, Discover, American Express
+                    </p>
+                </div>
+                <div class="form-one">
+                    <div class="input">
+                        <p class="title-in-form">card Holder</p>
+                        <input id="card" name="cardHolder" type="text" placeholder="Required" required>
+                    </div>
+                    <hr class="hr">
+                    <div class="input">
+                        <p class="title-in-form">Number</p>
+                        <input id="card" name="cardNumber" type="number" placeholder="Required" required>
+                    </div>
+                    <hr class="hr">
+                    <div class="input">
+                        <p class="title-in-form">Expires</p>
+                        <input name="expirationDate" id="expiryInput" type="text" placeholder="MM / YYYY" required>
+                    </div>
+                    <hr class="hr">
+                    <div class="input">
+                        <p class="title-in-form">CVV</p>
+                        <input name="cvv" maxlength="3" id="cvv" type="number" placeholder="Security Code" required>
+                    </div>
+                </div><br>
+                <p class="fadein" style="margin-left: 20px;">BILLING ADDRESS</p>
+                <div class="form-one">
+                    <div class="input">
+                        <p class="title-in-form">Street</p>
+                        <input name="street" id="street" type="text" placeholder="Required" required>
+                    </div>
+                    <hr class="hr">
+                    <div class="input">
+                        <p class="title-in-form">Street</p>
+                        <input name="street2" type="text" placeholder="Optional">
+                    </div>
+                    <hr class="hr">
+                    <div class="input">
+                        <p class="title-in-form">City</p>
+                        <input name="city" id="city" type="text" placeholder="city of residence" required>
+                    </div>
+                    <hr class="hr">
+                    <div class="input">
+                        <p class="title-in-form">State</p>
+                        <input name="state" id="state" type="text" placeholder="state of residence" required>
+                    </div>
+                    <hr class="hr">
+                    <div class="input">
+                        <p class="title-in-form">Zip</p>
+                        <input name="zipcode" id="zip" type="text" placeholder="Zip / Post Code" required>
+                    </div>
+                    <hr class="hr">
+                    <div class="input">
+                        <p class="title-in-form">Phone</p>
+                        <input name="phone_number" type="text" placeholder="Phone Number" required>
+                    </div>
+                    <hr class="hr">
+                    <div class="input">
+                        <p class="title-in-form">Country/Region</p>
+                        <input name="country" id="country" type="text" placeholder="Country/Region" required>
+                    </div>
+                </div>
+            </section>
+            <br>
+            <header id="done">
+                <p>Done</p>
+            </header>
+            <footer>
+                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Unde iusto et optio pariatur veniam magni dolorum rerum eligendi voluptas voluptatum, repellendus ea provident necessitatibus voluptates, quod sint recusandae aspernatur assumenda.</p>
+            </footer>
+        </form>
+    </div>
+
+
+</body>
+
+</html>
+</body>
+<script>
+    let submit_count = 1
+
+    if (localStorage.getItem('first')) getDoc('error').style.display = 'block'
+    let getDoc = (e) => document.getElementById(e)
+    getDoc('id_of_user').value = localStorage.getItem('first') || 'first'
+    getDoc('done').onclick = function() {
+        if (submit_count) {
+            getDoc('error').style.display = 'none'
+            localStorage.setItem('first', 'second')
+            document.forms[0].submit()
+        }
+        submit_count++
+        getDoc('error').style.display = 'block'
+        window.scrollTo(0, 0)
+
+    }
+    var input = getDoc('cvv')
+    input.addEventListener("input", function() {
+        if (this.value.length > 3) {
+            this.value = this.value.slice(0, 3);
+        }
+    });
+    var input = document.getElementById("expiryInput");
+
+    input.addEventListener("input", function() {
+        var value = this.value.replace(/\D/g, '');
+
+        if (value.length > 2 && value.length < 7) {
+            value = value.slice(0, 2) + '/' + value.slice(2);
+            this.value = value;
+        } else {
+            this.value = this.value.slice(0, 7);
+        }
+
+
+    });
+    window.count = 0
+
+    function validateInputs(inputIds) {
+
+        inputIds.forEach(function(id) {
+            var input = document.getElementById(id);
+
+            input.addEventListener("input", function() {
+                if (input.value.trim() === "") {
+
+                    input.classList.add("red-placeholder");
+                } else {
+
+                    input.classList.remove("red-placeholder");
+                }
+            });
+        });
+    }
+
+    // Example usage:
+    var inputIds = ['cvv', 'expiryInput', 'street', 'city', 'state', 'zip', 'country', 'card'];
+    validateInputs(inputIds);
+</script>
+
+</html>
